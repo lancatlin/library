@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="index.svg">
+   sodipodi:docname="search-result.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9953373"
-     inkscape:cx="488.94776"
-     inkscape:cy="406.61583"
+     inkscape:zoom="0.82140942"
+     inkscape:cx="506.84584"
+     inkscape:cy="348.45317"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,6 +53,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-87)">
+    <rect
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.69277829;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1355"
+       width="23.830448"
+       height="11.868423"
+       x="226.62512"
+       y="125.18863" />
     <rect
        style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect3713"
@@ -144,14 +151,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="76.822784"
-       y="141.49365"
+       x="14.794306"
+       y="136.23062"
        id="text4590"><tspan
          sodipodi:role="line"
          id="tspan4588"
-         x="76.822784"
-         y="141.49365"
-         style="stroke-width:0.26458332">山佳伊圖書管理系統</tspan></text>
+         x="14.794306"
+         y="136.23062"
+         style="stroke-width:0.26458332">查詢結果</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -185,83 +192,79 @@
          x="78.949356"
          y="101.62025"
          style="stroke-width:0.26458332">我的圖書</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1349"
+       width="120.04685"
+       height="16.916855"
+       x="92.694458"
+       y="122.45044" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="10.101266"
-       y="157.70886"
-       id="text1271"><tspan
+       x="230.16693"
+       y="134.3127"
+       id="text1353"><tspan
          sodipodi:role="line"
-         id="tspan1269"
-         x="10.101266"
-         y="157.70886"
-         style="stroke-width:0.26458332">當月最多借閱</tspan></text>
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273"
-       width="44.924049"
-       height="53.430378"
-       x="26.316454"
-       y="161.43037" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-6"
-       width="44.924049"
-       height="53.430378"
-       x="92.905067"
-       y="162.09492" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-2"
-       width="44.924049"
-       height="53.430378"
-       x="163.61392"
-       y="162.36075" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-9"
-       width="44.924049"
-       height="53.430378"
-       x="227.67722"
-       y="161.56329" />
+         id="tspan1351"
+         x="230.16693"
+         y="134.3127"
+         style="stroke-width:0.26458332">搜尋</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="11.43038"
-       y="230.54431"
-       id="text1304"><tspan
+       x="98.104813"
+       y="135.18568"
+       id="text1359"><tspan
          sodipodi:role="line"
-         id="tspan1302"
-         x="11.43038"
-         y="230.54431"
-         style="stroke-width:0.26458332">隨機推薦</tspan></text>
+         id="tspan1357"
+         x="98.104813"
+         y="135.18568"
+         style="stroke-width:0.26458332">能高越嶺道</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="258.52188"
+       y="134.71895"
+       id="text1367"><tspan
+         sodipodi:role="line"
+         id="tspan1365"
+         x="258.52188"
+         y="134.71895"
+         style="fill:#0000ff;stroke-width:0.26458332">進階查詢</tspan></text>
     <rect
        style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-1"
-       width="44.924049"
-       height="53.430378"
-       x="26.449369"
-       y="236.25949" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-27"
-       width="44.924049"
-       height="53.430378"
-       x="91.575951"
-       y="235.72784" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-0"
-       width="44.924049"
-       height="53.430378"
-       x="162.019"
-       y="238.12025" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-93"
-       width="44.924049"
-       height="53.430378"
-       x="228.20886"
-       y="237.58861" />
+       id="rect1583"
+       width="37.686749"
+       height="42.196274"
+       x="25.446608"
+       y="148.18567" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="77.628258"
+       y="160.4258"
+       id="text1587"><tspan
+         sodipodi:role="line"
+         id="tspan1585"
+         x="77.628258"
+         y="160.4258"
+         style="font-size:9.17222214px;stroke-width:0.26458332">能高越嶺道——穿越時空之旅</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="76.661926"
+       y="175.56493"
+       id="text1591"><tspan
+         sodipodi:role="line"
+         id="tspan1589"
+         x="76.661926"
+         y="175.56493"
+         style="stroke-width:0.26458332">作者：徐如林、楊南郡</tspan><tspan
+         sodipodi:role="line"
+         x="76.661926"
+         y="186.14825"
+         style="stroke-width:0.26458332"
+         id="tspan1593">出版社：行政院農業委員會林務局</tspan></text>
   </g>
 </svg>

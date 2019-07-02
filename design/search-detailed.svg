@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="index.svg">
+   sodipodi:docname="search-detailed.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9953373"
-     inkscape:cx="488.94776"
-     inkscape:cy="406.61583"
+     inkscape:zoom="0.88377786"
+     inkscape:cx="680.80041"
+     inkscape:cy="329.77588"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,6 +53,13 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-87)">
+    <rect
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.69277829;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1355"
+       width="23.830448"
+       height="11.868423"
+       x="238.62276"
+       y="187.42227" />
     <rect
        style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect3713"
@@ -144,14 +151,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="76.822784"
-       y="141.49365"
+       x="121.93441"
+       y="136.98248"
        id="text4590"><tspan
          sodipodi:role="line"
          id="tspan4588"
-         x="76.822784"
-         y="141.49365"
-         style="stroke-width:0.26458332">山佳伊圖書管理系統</tspan></text>
+         x="121.93441"
+         y="136.98248"
+         style="stroke-width:0.26458332">進階查詢</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -185,83 +192,139 @@
          x="78.949356"
          y="101.62025"
          style="stroke-width:0.26458332">我的圖書</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1349"
+       width="143.99879"
+       height="17.128548"
+       x="85.391891"
+       y="185.34387" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="10.101266"
-       y="157.70886"
-       id="text1271"><tspan
+       x="242.76332"
+       y="195.94759"
+       id="text1353"><tspan
          sodipodi:role="line"
-         id="tspan1269"
-         x="10.101266"
-         y="157.70886"
-         style="stroke-width:0.26458332">當月最多借閱</tspan></text>
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273"
-       width="44.924049"
-       height="53.430378"
-       x="26.316454"
-       y="161.43037" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-6"
-       width="44.924049"
-       height="53.430378"
-       x="92.905067"
-       y="162.09492" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-2"
-       width="44.924049"
-       height="53.430378"
-       x="163.61392"
-       y="162.36075" />
-    <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-9"
-       width="44.924049"
-       height="53.430378"
-       x="227.67722"
-       y="161.56329" />
+         id="tspan1351"
+         x="242.76332"
+         y="195.94759"
+         style="stroke-width:0.26458332">搜尋</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="11.43038"
-       y="230.54431"
-       id="text1304"><tspan
+       x="88.940132"
+       y="196.78708"
+       id="text1359"><tspan
          sodipodi:role="line"
-         id="tspan1302"
-         x="11.43038"
-         y="230.54431"
-         style="stroke-width:0.26458332">隨機推薦</tspan></text>
+         id="tspan1357"
+         x="88.940132"
+         y="196.78708"
+         style="stroke-width:0.26458332">能高越嶺道</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="65.392403"
+       y="165.41772"
+       id="text1363"><tspan
+         sodipodi:role="line"
+         id="tspan1361"
+         x="65.392403"
+         y="165.41772"
+         style="stroke-width:0.26458332">查詢欄位包含書名、作者、出版社、ISBN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="63.582676"
+       y="196.2346"
+       id="text1390"><tspan
+         sodipodi:role="line"
+         id="tspan1388"
+         x="63.582676"
+         y="196.2346"
+         style="stroke-width:0.26458332">書名</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="62.778343"
+       y="213.59441"
+       id="text1394"><tspan
+         sodipodi:role="line"
+         id="tspan1392"
+         x="62.778343"
+         y="213.59441"
+         style="stroke-width:0.26458332">作者</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="54.193142"
+       y="230.93729"
+       id="text1398"><tspan
+         sodipodi:role="line"
+         id="tspan1396"
+         x="54.193142"
+         y="230.93729"
+         style="stroke-width:0.26458332">出版社</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="60.857468"
+       y="248.21242"
+       id="text1402"><tspan
+         sodipodi:role="line"
+         id="tspan1400"
+         x="60.857468"
+         y="248.21242"
+         style="stroke-width:0.26458332">ISBN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="54.243942"
+       y="265.66959"
+       id="text1406"><tspan
+         sodipodi:role="line"
+         id="tspan1404"
+         x="54.243942"
+         y="265.66959"
+         style="stroke-width:0.26458332">出版年</tspan></text>
     <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-1"
-       width="44.924049"
-       height="53.430378"
-       x="26.449369"
-       y="236.25949" />
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1349-6"
+       width="143.99879"
+       height="17.128548"
+       x="85.391891"
+       y="202.47241" />
     <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-27"
-       width="44.924049"
-       height="53.430378"
-       x="91.575951"
-       y="235.72784" />
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1349-0"
+       width="143.99879"
+       height="17.128548"
+       x="85.391891"
+       y="219.60095" />
     <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-0"
-       width="44.924049"
-       height="53.430378"
-       x="162.019"
-       y="238.12025" />
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1349-62"
+       width="143.99879"
+       height="17.128548"
+       x="85.391891"
+       y="236.72949" />
     <rect
-       style="opacity:1;vector-effect:none;fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect1273-93"
-       width="44.924049"
-       height="53.430378"
-       x="228.20886"
-       y="237.58861" />
+       style="opacity:1;vector-effect:none;fill:#f2f2f2;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.86500001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1349-61"
+       width="143.99879"
+       height="17.128548"
+       x="85.391891"
+       y="253.85803" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="59.276775"
+       y="272.45105"
+       id="text1443"><tspan
+         sodipodi:role="line"
+         id="tspan1441"
+         x="59.276775"
+         y="272.45105"
+         style="font-size:4.23333311px;stroke-width:0.26458332">日期選擇器</tspan></text>
   </g>
 </svg>
