@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.9953373"
-     inkscape:cx="509.37258"
-     inkscape:cy="467.52853"
+     inkscape:zoom="0.99533729"
+     inkscape:cx="552.08069"
+     inkscape:cy="443.11445"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1015"
-     inkscape:window-x="1440"
+     inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="1" />
   <metadata
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -111,57 +111,339 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:16.93333244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="112.91208"
-       y="138.86214"
+       x="89.45652"
+       y="126.99132"
        id="text4590"><tspan
          sodipodi:role="line"
          id="tspan4588"
-         x="112.91208"
-         y="138.86214"
-         style="stroke-width:0.26458332">書籍管理</tspan></text>
+         x="89.45652"
+         y="126.99132"
+         style="stroke-width:0.26458332">書籍資訊：書名</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ec423e;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="35.088608"
-       y="102.1519"
-       id="text4652"><tspan
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="37.892479"
+       y="147.70207"
+       id="text4703"><tspan
          sodipodi:role="line"
-         id="tspan4650"
-         x="35.088608"
-         y="102.1519"
-         style="fill:#ec423e;fill-opacity:1;stroke-width:0.26458332">新書建置</tspan></text>
+         id="tspan4701"
+         x="37.892479"
+         y="147.70207"
+         style="stroke-width:0.26458332">書名</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ec423e;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="76.29113"
-       y="102.1519"
-       id="text4656"><tspan
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="38.04488"
+       y="160.18066"
+       id="text4707"><tspan
          sodipodi:role="line"
-         id="tspan4654"
-         x="76.29113"
-         y="102.1519"
-         style="fill:#ec423e;fill-opacity:1;stroke-width:0.26458332">書籍資訊修改</tspan></text>
+         id="tspan4705"
+         x="38.04488"
+         y="160.18066"
+         style="stroke-width:0.26458332">作者/譯者</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ec423e;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="136.3671"
-       y="101.88607"
-       id="text4660"><tspan
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="38.068527"
+       y="188.46144"
+       id="text4711"><tspan
          sodipodi:role="line"
-         id="tspan4658"
-         x="136.3671"
-         y="101.88607"
-         style="fill:#ec423e;fill-opacity:1;stroke-width:0.26458332">書籍盤點</tspan></text>
+         id="tspan4709"
+         x="38.068527"
+         y="188.46144"
+         style="stroke-width:0.26458332">ISBN碼</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ec423e;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
-       x="178.89873"
-       y="101.62026"
-       id="text4664"><tspan
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="38.000793"
+       y="201.52165"
+       id="text4715"><tspan
          sodipodi:role="line"
-         id="tspan4662"
-         x="178.89873"
-         y="101.62026"
-         style="stroke-width:0.26458332;fill:#ec423e;fill-opacity:1;">資料匯入/匯出</tspan></text>
+         id="tspan4713"
+         x="38.000793"
+         y="201.52165"
+         style="stroke-width:0.26458332">出版社</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="38.000793"
+       y="214.4236"
+       id="text4719"><tspan
+         sodipodi:role="line"
+         id="tspan4717"
+         x="38.000793"
+         y="214.4236"
+         style="stroke-width:0.26458332">出版年份</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="38.044876"
+       y="234.62611"
+       id="text4723"><tspan
+         sodipodi:role="line"
+         id="tspan4721"
+         x="38.044876"
+         y="234.62611"
+         style="stroke-width:0.26458332">分類類別</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="155.27283"
+       y="145.04385"
+       id="text4789"><tspan
+         sodipodi:role="line"
+         id="tspan4787"
+         x="155.27283"
+         y="145.04385"
+         style="stroke-width:0.26458332">分類號</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="155.53864"
+       y="157.80333"
+       id="text4793"><tspan
+         sodipodi:role="line"
+         id="tspan4791"
+         x="155.53864"
+         y="157.80333"
+         style="stroke-width:0.26458332">作者號</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="15.715763"
+       y="247.11943"
+       id="text4858"><tspan
+         sodipodi:role="line"
+         id="tspan4856"
+         x="15.715763"
+         y="247.11943"
+         style="stroke-width:0.26458332">館藏數量：2</tspan></text>
+    <rect
+       style="opacity:1;vector-effect:none;fill:#fffdd8;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1829685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4891"
+       width="208.60399"
+       height="35.419468"
+       x="36.187187"
+       y="254.00485" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:#fffdd8;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.1829685;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4893"
+       width="208.33229"
+       height="19.21693"
+       x="36.187187"
+       y="254.00485" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.46500003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 78.427636,254.22234 V 288.7793"
+       id="path4897"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0026f5;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="50.375038"
+       y="266.74182"
+       id="text4901"><tspan
+         sodipodi:role="line"
+         id="tspan4899"
+         x="50.375038"
+         y="266.74182"
+         style="font-weight:normal;fill:#0026f5;fill-opacity:1;stroke-width:0.26458332">378</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#0026f5;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="50.044716"
+       y="284.16263"
+       id="text4905"><tspan
+         sodipodi:role="line"
+         id="tspan4903"
+         x="50.044716"
+         y="284.16263"
+         style="fill:#0026f5;fill-opacity:1;stroke-width:0.26458332">379</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.46500015;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 121.47606,254.47331 v 34.55696"
+       id="path4897-6"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="91.708862"
+       y="267.22784"
+       id="text4928"><tspan
+         sodipodi:role="line"
+         id="tspan4926"
+         x="91.708862"
+         y="267.22784"
+         style="stroke-width:0.26458332">本館</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="91.974686"
+       y="284.77216"
+       id="text4932"><tspan
+         sodipodi:role="line"
+         id="tspan4930"
+         x="91.974686"
+         y="284.77216"
+         style="stroke-width:0.26458332">館外</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="143.27849"
+       y="266.16455"
+       id="text4948"><tspan
+         sodipodi:role="line"
+         id="tspan4946"
+         x="143.27849"
+         y="266.16455"
+         style="stroke-width:0.26458332">可借閱</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="143.54431"
+       y="284.50635"
+       id="text4952"><tspan
+         sodipodi:role="line"
+         id="tspan4950"
+         x="143.54431"
+         y="284.50635"
+         style="stroke-width:0.26458332">借出中</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.46500015;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 184.74684,254.47826 v 34.55696"
+       id="path4897-6-0"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="103.64813"
+       y="146.77786"
+       id="text908"><tspan
+         sodipodi:role="line"
+         id="tspan906"
+         x="103.64813"
+         y="146.77786"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';stroke-width:0.26458332px">書名</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="106.31875"
+       y="160.16139"
+       id="text912"><tspan
+         sodipodi:role="line"
+         id="tspan910"
+         x="106.31875"
+         y="160.16139"
+         style="stroke-width:0.26458332px">作者1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="105.75485"
+       y="173.69489"
+       id="text916"><tspan
+         sodipodi:role="line"
+         id="tspan914"
+         x="105.75485"
+         y="173.69489"
+         style="stroke-width:0.26458332px">作者2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="106.479"
+       y="186.85245"
+       id="text920"><tspan
+         sodipodi:role="line"
+         id="tspan918"
+         x="106.479"
+         y="186.85245"
+         style="stroke-width:0.26458332px">ISBN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="107.52586"
+       y="201.1378"
+       id="text924"><tspan
+         sodipodi:role="line"
+         id="tspan922"
+         x="107.52586"
+         y="201.1378"
+         style="stroke-width:0.26458332px">出版社</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="108.21143"
+       y="213.5435"
+       id="text928"><tspan
+         sodipodi:role="line"
+         id="tspan926"
+         x="108.21143"
+         y="213.5435"
+         style="stroke-width:0.26458332px">2019.6</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="112.00304"
+       y="234.40762"
+       id="text932"><tspan
+         sodipodi:role="line"
+         id="tspan930"
+         x="112.00304"
+         y="234.40762"
+         style="stroke-width:0.26458332px">生態文學</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="199.24301"
+       y="145.50014"
+       id="text936"><tspan
+         sodipodi:role="line"
+         id="tspan934"
+         x="199.24301"
+         y="145.50014"
+         style="stroke-width:0.26458332px">142</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="230.06926"
+       y="145.87607"
+       id="text940"><tspan
+         sodipodi:role="line"
+         id="tspan938"
+         x="230.06926"
+         y="145.87607"
+         style="stroke-width:0.26458332px">某某類</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="199.99486"
+       y="158.0938"
+       id="text944"><tspan
+         sodipodi:role="line"
+         id="tspan942"
+         x="199.99486"
+         y="158.0938"
+         style="stroke-width:0.26458332px">713</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="212.12659"
+       y="266.96204"
+       id="text889"><tspan
+         sodipodi:role="line"
+         id="tspan887"
+         x="212.12659"
+         y="266.96204"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Sans CJK TC';-inkscape-font-specification:'Noto Sans CJK TC Bold';fill:#0000ff;stroke-width:0.26458332px">預約</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:8.46666622px;line-height:139.99999762%;font-family:'Noto Serif CJK TC';-inkscape-font-specification:'Noto Serif CJK TC Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="212.51941"
+       y="285.60132"
+       id="text889-3"><tspan
+         sodipodi:role="line"
+         id="tspan887-6"
+         x="212.51941"
+         y="285.60132"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Sans CJK TC';-inkscape-font-specification:'Noto Sans CJK TC Bold';fill:#0000ff;stroke-width:0.26458332px">預約</tspan></text>
   </g>
 </svg>
