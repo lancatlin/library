@@ -8,7 +8,51 @@
         {{template "main_header"}}
         <main>
             <h1>{{.BookName}} 書籍資訊</h1>
-
+            <table>
+                <tbody>
+                    <tr>
+                        <td>書名</td>
+                        <td>{{.BookName}}</td>
+                    </tr>
+                    {{range .Authors}}
+                    <tr>
+                        <td>作者</td>
+                        <td><a href="$/{{.ID}}">{{.Name}}</a></td>
+                    </tr>
+                    {{end}}
+                    <tr>
+                        <td>出版社</td>
+                        <td>{{.Publisher}}</td>
+                    </tr>
+                    <tr>
+                        <td>年份</td>
+                        <td>{{.Year}}</td>
+                    </tr>
+                    <tr>
+                        <td>分類</td>
+                        <td>{{.Classfication}}</td>
+                    </tr>
+                    <tr>
+                        <td>分類號</td>
+                        <td>{{.ClassficationNumber}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>館藏數量：{{len .Items}}</h2>
+            <table>
+                <tbody>
+                    {{range .Items}}
+                    <tr>
+                        <td><a href="$/{{.ID}}">{{.ID}}</a></td>
+                        <td>{{.Location}}</td>
+                        <td>{{.Status}}</td>
+                        {{if true}}
+                        <td><a href="$/{{.ID}}">預約</a></td>
+                        {{end}}
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
         </main>
         {{template "footer"}}
     </body>
