@@ -1,0 +1,9 @@
+{{template "head" "搜尋館藏"}}
+{{template "main_header" .}}
+<h1>綜合查詢</h1>
+<form action="$" method="get">
+    <input type="text" name="query">
+    <input type="submit" value="搜尋">
+    <a href="/search/detailed">進階搜尋</a>
+</form>
+{{template "footer"}}

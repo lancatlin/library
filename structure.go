@@ -53,6 +53,8 @@ type Book struct {
 	ClassificationNumber string
 	Items                []Item
 	Tags                 []Tag
+	Cover                string
+	Description          string
 }
 
 // Author is the structure that record the author data

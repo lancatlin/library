@@ -1,0 +1,24 @@
+{{template "head" "搜尋結果"}}
+{{template "main_header" .}}
+<link rel="stylesheet" href="/static/css/search_results.css">
+<h1>查詢結果</h1>
+<form action="/search" method="get">
+    <input type="text" name="query" value="{{.Query}}">
+    <input type="submit" value="搜尋">
+    <a href="/search/detailed">進階查詢</a>
+</form>
+<div style="float: none;">
+    {{range .Results}}
+    <div style="background-color: ghostwhite">
+        <div class="result">
+            <img height="100" style="padding: 10px;" src="{{.Cover}}">
+        </div>
+        <div class="result">
+            <h5><a href="/books/{{.ID}}">{{.BookName}}</a></h5>
+            <p>{{range .Authors}}{{.}} {{end}}</p>
+            <p>{{.Publisher}}</p>
+        </div>
+    </div>
+    {{end}}
+</div>
+{{template "footer"}}

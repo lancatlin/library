@@ -19,5 +19,24 @@ func main() {
 		c.HTML(200, "index.html", getUser(c))
 	})
 	r.GET("/books/index", booksIndex)
+	r.GET("/search/simple", func(c *gin.Context) {
+		c.HTML(200, "search_simple.html", getUser(c))
+	})
+	r.GET("/search/detailed", func(c *gin.Context) {
+		page := struct {
+			User
+			Categories []Category
+		}{
+			getUser(c),
+			[]Category{
+				Category{Name: "自然文學"},
+				Category{Name: "自然美學"},
+				Category{Name: "自然生態"},
+				Category{Name: "自然哲學"},
+			},
+		}
+		c.HTML(200, "search_detailed.html", page)
+	})
+	r.GET("/search", search)
 	r.Run(":8080")
 }

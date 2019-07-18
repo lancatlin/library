@@ -1,0 +1,43 @@
+{{template "head" "進階搜尋"}}
+{{template "main_header" .}}
+<h1>進階搜尋</h1>
+<form method="get" action="/search">
+    <table>
+        <tbody>
+            <tr>
+                <td>書名</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>作者</td>
+                <td><input type="text" name="author"></td>
+            </tr>
+            <tr>
+                <td>出版社</td>
+                <td><input type="text" name="publisher"></td>
+            </tr>
+            <tr>
+                <td>ISBN</td>
+                <td><input type="text" name="ISBN"></td>
+            </tr>
+            <tr>
+                <td>年份</td>
+                <td><input type="text" name="year"></td>
+            </tr>
+            <tr>
+                <td>類別</td>
+                <td><select>
+                    {{range .Categories}}
+                    <option value="{{.ID}}">{{.Name}}</option>
+                    {{end}}
+                </select></td>
+            </tr>
+            <tr>
+                <td>分類號</td>
+                <td><input type="text" name="classfication-number"></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="搜尋">
+</form>
+{{template "footer"}}
