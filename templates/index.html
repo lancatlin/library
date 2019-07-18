@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>首頁</title>
-  </head>
-  <body>
-    {{template "main_header"}}
-    <main>
-      <h1>首頁</h1>
-    </main>
-    {{template "footer"}}
-  </body>
-</html>
+{{template "head" "首頁"}}
+{{template "main_header" .}}
+<main>
+  <h1>首頁</h1>
+</main>
+{{template "footer"}}

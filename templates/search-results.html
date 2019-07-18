@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>搜尋結果</title>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    </head>
-    <body>
-        {{template "main_header"}}
-        <main>
-            <h1>查詢結果</h1>
-            <form action="$" method="get">
-                <input type="text" name="query" value="{{.Query}}">
-                <input type="submit" value="搜尋">
-                <a href="$">進階查詢</a>
-            </form>
-            <div>
-                {{range .Results}}
-                <div>
-                    <img src="{{.Image}}">
-                    <h5>{{.BookName}}</h5>
-                    <p>{{.Author}}</p>
-                    <p>{{.Publisher}}</p>
-                </div>
-                {{end}}
-            </div>
-        </main>
-        {{template "footer"}}
-    </body>
-</html>
+{{template "head" "搜尋結果"}}
+{{template "main_header" .}}
+<main>
+    <h1>查詢結果</h1>
+    <form action="$" method="get">
+        <input type="text" name="query" value="{{.Query}}">
+        <input type="submit" value="搜尋">
+        <a href="$">進階查詢</a>
+    </form>
+    <div>
+        {{range .Results}}
+        <div>
+            <img src="{{.Image}}">
+            <h5>{{.BookName}}</h5>
+            <p>{{.Author}}</p>
+            <p>{{.Publisher}}</p>
+        </div>
+        {{end}}
+    </div>
+</main>
+{{template "footer"}}

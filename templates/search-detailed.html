@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>進階搜尋</title>
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    </head>
-    <body>
-        {{template "main_header"}}
-        <main>
-            <h1>進階搜尋</h1>
-            <form method="get" action="$">
-                <input type="text" name="books-name">
-                <input type="text" name="author">
-                <input type="text" name="publisher">
-                <input type="text" name="ISBN">
-                <input type="text" name="year">
-                <input type="text" name="classfication-number">
-                <input type="submit" value="搜尋">
-            </form>
-        </main>
-        {{template "footer"}}
-    </body>
-</html>
+{{template "head" "進階搜尋"}}
+{{template "main_header" .}}
+<main>
+    <h1>進階搜尋</h1>
+    <form method="get" action="$">
+        <input type="text" name="books-name">
+        <input type="text" name="author">
+        <input type="text" name="publisher">
+        <input type="text" name="ISBN">
+        <input type="text" name="year">
+        <input type="text" name="classfication-number">
+        <input type="submit" value="搜尋">
+    </form>
+</main>
+{{template "footer"}}
