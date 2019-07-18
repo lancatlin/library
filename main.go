@@ -12,10 +12,12 @@ func loadTemplate() (tpl *template.Template) {
 }
 
 func main() {
-	r := gin.New()
+	r := gin.Default()
 	r.SetHTMLTemplate(loadTemplate())
+	r.Static("/static", "./static")
 	r.GET("/", func(c *gin.Context) {
-		c.HTML(200, "index.html", nil)
+		c.HTML(200, "index.html", getUser(c))
 	})
+	r.GET("/books/index", booksIndex)
 	r.Run(":8080")
 }

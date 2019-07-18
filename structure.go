@@ -29,19 +29,27 @@ const (
 	StatusMissing
 )
 
-// Catalog is the structure of the catalog of books
+type Role int
+
+const (
+	RoleAdmin Role = iota
+	RoleMember
+	RoleUser
+)
+
+// Book is the structure of the catalog of books
 // Catalog "has many" items
 // 	Many to Many Author
 //	Has one Publisher
 //	Has one Classification
 //	Has many Tags
-type Catalog struct {
+type Book struct {
 	gorm.Model
-	Name                 string
+	BookName             string
 	Authors              []Author
 	Publisher            Publisher
 	Year                 int
-	Classification       Classification
+	Category             Category
 	ClassificationNumber string
 	Items                []Item
 	Tags                 []Tag
@@ -51,28 +59,40 @@ type Catalog struct {
 type Author struct {
 	gorm.Model
 	Name  string
-	Works []Catalog
+	Works []Book
+}
+
+func (a Author) String() string {
+	return a.Name
 }
 
 // Publisher is just like Author, a structure of publisher
 type Publisher struct {
 	gorm.Model
 	Name        string
-	Publication []Catalog
+	Publication []Book
+}
+
+func (p Publisher) String() string {
+	return p.Name
 }
 
 // Classification is define by the library
-type Classification struct {
+type Category struct {
 	gorm.Model
 	Name  string
-	Books []Catalog
+	Books []Book
+}
+
+func (c Category) String() string {
+	return c.Name
 }
 
 // Item is the instance of a book in the library
 type Item struct {
 	gorm.Model
 	Barcode      string `gorm:"primary_key"`
-	Catalog      Catalog
+	Book         Book
 	Status       Status
 	NewBookLabel string
 	Borrower     User
@@ -82,9 +102,11 @@ type Item struct {
 // User the structure of users
 type User struct {
 	gorm.Model
-	Name      string
+	UserName  string
 	Email     string
 	Phone     string
+	Role      Role
+	Login     bool
 	Lendings  []Item
 	Donations []Item
 	Password  []byte
@@ -95,5 +117,9 @@ type User struct {
 type Tag struct {
 	gorm.Model
 	Name  string `gorm:"many2many:catalog_tags"`
-	Books []Catalog
+	Books []Book
+}
+
+func (t Tag) String() string {
+	return t.Name
 }

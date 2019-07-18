@@ -1,0 +1,19 @@
+nav {
+    background-color: #cfcfcf;
+    display: block;
+    padding: 5px;
+}
+
+nav a {
+    color: black;
+    padding: 5px;
+}
+
+nav a:hover {
+    background-color: #555;
+    color: white
+}
+
+.right {
+    float: right;
+}
