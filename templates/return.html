@@ -1,0 +1,22 @@
+{{template "head" "還書"}}
+{{template "main_header" .}}
+<form action="/records" method="delete">
+    <table>
+        <tbody>
+            <tr>
+                <td>條碼</td>
+                <td><input type="text" name="barcode" id=""></td>
+                <td><input type="submit" value="還入"></td>
+            </tr>
+            <tr>
+                <td>書名</td>
+                <td><b id="book_name">能高越嶺道</b></td>
+            </tr>
+            <tr>
+                <td>借閱者</td>
+                <td><b id="borrower">林宏信</b></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+{{template "footer" .}}

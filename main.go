@@ -38,5 +38,11 @@ func main() {
 		c.HTML(200, "search_detailed.html", page)
 	})
 	r.GET("/search", search)
+	r.GET("/lending", func(c *gin.Context) {
+		c.HTML(200, "lending.html", getUser(c))
+	})
+	r.GET("/return", func(c *gin.Context) {
+		c.HTML(200, "return.html", getUser(c))
+	})
 	r.Run(":8080")
 }

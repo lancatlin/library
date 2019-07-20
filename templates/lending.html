@@ -1,0 +1,33 @@
+{{template "head" "借出"}}
+{{template "main_header" .}}
+<form action="/records" method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td>借書人</td>
+                <td><input type="text" name="user_id"></td>
+                <td></td>
+                <td>搜尋</td>
+                <td><input type="text" list="users" name="user_search">
+                    <datalist id="users">
+                        <option value="林宏信"></option>
+                        <option value="陳宏信"></option>
+                        <option value="蔡智豪"></option>
+                        <option value="白嬛貞"></option>
+                        <option value="陳欣一"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>書籍條碼</td>
+                <td><input type="text" name="barcode" id=""></td>
+                <td><input type="submit" value="借出"></td>
+            </tr>
+            <tr>
+                <td>書名</td>
+                <td>能高越嶺道</td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+{{template "footer" .}}

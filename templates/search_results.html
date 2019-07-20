@@ -7,13 +7,13 @@
     <input type="submit" value="搜尋">
     <a href="/search/detailed">進階查詢</a>
 </form>
-<div style="float: none;">
+<div>
     {{range .Results}}
-    <div style="background-color: ghostwhite">
-        <div class="result">
-            <img height="100" style="padding: 10px;" src="{{.Cover}}">
+    <div style="background-color: ghostwhite;">
+        <div>
+            <a><img height="100" style="padding: 10px;" src="{{.Cover}}"></a>
         </div>
-        <div class="result">
+        <div>
             <h5><a href="/books/{{.ID}}">{{.BookName}}</a></h5>
             <p>{{range .Authors}}{{.}} {{end}}</p>
             <p>{{.Publisher}}</p>
