@@ -1,5 +1,8 @@
 main {
-    max-width: 60%;
+    max-width: 70%;
     margin: 0 auto;
-    margin-top: 5%;
+}
+
+input {
+    max-width: 150px;
 }

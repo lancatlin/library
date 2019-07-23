@@ -46,5 +46,5 @@ func main() {
 	})
 	r.GET("/management/books", books)
 	r.GET("/management/books/new", booksNew)
-	r.Run(":8080")
+	r.Run("localhost:8080")
 }
