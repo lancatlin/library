@@ -57,6 +57,10 @@ type Book struct {
 	Description          string
 }
 
+func (b Book) Author() string {
+	return b.Authors[0].String()
+}
+
 // Author is the structure that record the author data
 type Author struct {
 	gorm.Model

@@ -1,0 +1,24 @@
+{{template "head" "書籍管理"}}
+{{template "books_header" .}}
+<h1>書籍管理</h1>
+<table>
+    <tr>
+        <td>流水號</td>
+        <td>書名</td>
+        <td>作者</td>
+        <td>出版社</td>
+        <td>ISBN</td>
+        <td>類別</td>
+    </tr>
+    {{range .Items}}
+    <tr>
+        <td><a href="">{{.Barcode}}</a></td>
+        <td><a href="">{{.Book.BookName}}</a></td>
+        <td><a href="">{{.Book.Author}}</a></td>
+        <td><a href="">{{.Book.Publisher}}</a></td>
+        <td><a href="">{{.Book.Category}}</a></td>
+        <td><a href="">編輯</a></td>
+    </tr>
+    {{end}}
+</table>
+{{template "footer"}}

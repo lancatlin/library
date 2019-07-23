@@ -4,7 +4,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func booksIndex(c *gin.Context) {
+var fakeBooks = []Book{}
+var fakeItems = []Item{}
+
+func init() {
 	book := Book{
 		BookName: "自然文學之書",
 		Authors: []Author{
@@ -29,9 +32,36 @@ func booksIndex(c *gin.Context) {
 			},
 		},
 	}
+	fakeBooks = append(fakeBooks, book)
+	fakeItems = []Item{
+		Item{
+			Barcode: "A380",
+			Status:  StatusInside,
+			Book:    fakeBooks[0],
+		},
+		Item{
+			Barcode: "A381",
+			Status:  StatusLending,
+			Book:    fakeBooks[0],
+		},
+	}
+}
+
+func booksIndex(c *gin.Context) {
 	page := struct {
 		User
 		Book
-	}{getUser(c), book}
+	}{getUser(c), fakeBooks[0]}
 	c.HTML(200, "books_index.html", page)
+}
+
+func books(c *gin.Context) {
+	page := struct {
+		User
+		Items []Item
+	}{
+		getUser(c),
+		fakeItems,
+	}
+	c.HTML(200, "books.html", page)
 }

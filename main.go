@@ -44,5 +44,6 @@ func main() {
 	r.GET("/return", func(c *gin.Context) {
 		c.HTML(200, "return.html", getUser(c))
 	})
+	r.GET("/books", books)
 	r.Run(":8080")
 }
