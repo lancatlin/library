@@ -1,0 +1,60 @@
+{{template "head" "新書建置"}}
+{{template "books_header" .}}
+<h1>新書建置</h1>
+<div id="search_div">
+    <form action="">
+        ISBN編目資料查詢：<input type="text" name="isbn_search" id="isbn_search">
+        <input type="submit" value="搜尋">
+    </form>
+</div>
+<div id="input_div">
+    <form action="/management/books/new" method="post">
+        <table>
+            <tr>
+                <td>書名</td>
+                <td><input type="text" name="bookname" id="bookname"></td>
+            </tr>
+            <tr>
+                <td>作者/譯者</td>
+                <td><input type="text" name="author" id="author"></td>
+                <td><button>+</button></td>
+            </tr>
+            <tr>
+                <td>ISBN</td>
+                <td><input type="text" name="isbn" id="isbn"></td>
+            </tr>
+            <tr>
+                <td>出版社</td>
+                <td><input type="text" name="publisher" id="publisher"></td>
+            </tr>
+            <tr>
+                <td>出版年份</td>
+                <td><input type="number" name="year" id="year"></td>
+            </tr>
+            <tr>
+                <td>分類號</td>
+                <td><input type="text" name="classification_number" id="classification_number"></td>
+            </tr>
+            <tr>
+                <td>分類</td>
+                <td><select name="category" id="category">
+                    {{range .Categories}}
+                    <option value=".ID">{{.}}</option>
+                    {{end}}
+                </select></td>
+            </tr>
+            <tr>
+                <td>館藏數量</td>
+                <td><input type="number" name="items_amount" id="items_amount"></td>
+            </tr>
+            <tr>
+                <td>新書</td>
+                <td><input type="checkbox" name="new_book_label" id="new_book_label"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="新增"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{{template "footer" .}}

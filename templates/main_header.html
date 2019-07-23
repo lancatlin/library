@@ -16,8 +16,8 @@
 				{{if eq .Role 0}}
 				<a href="/lending">借出</a>
 				<a href="/return">還入</a>
-				<a href="/books">書籍管理</a>
-				<a href="/users">會員管理</a>
+				<a href="/management/books">書籍管理</a>
+				<a href="/management/users">會員管理</a>
 				{{end}}
 				{{if .Login}}
 				<a class="right" href="/users/{{.ID}}">{{.UserName}}</a>

@@ -65,3 +65,19 @@ func books(c *gin.Context) {
 	}
 	c.HTML(200, "books.html", page)
 }
+
+func booksNew(c *gin.Context) {
+	page := struct {
+		User
+		Categories []Category
+	}{
+		getUser(c),
+		[]Category{
+			Category{Name: "自然文學"},
+			Category{Name: "自然美學"},
+			Category{Name: "自然生態"},
+			Category{Name: "自然哲學"},
+		},
+	}
+	c.HTML(200, "books_new.html", page)
+}

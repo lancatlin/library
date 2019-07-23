@@ -1,12 +1,14 @@
 nav {
-    background-color: #cfcfcf;
-    display: block;
-    padding: 5px;
+    background-color: #AAA;
+    display: inline-block;
+    width: 100%;
 }
 
 nav a {
     color: black;
-    padding: 5px;
+    padding: 8px;
+    display: block;
+    float: left;
 }
 
 nav a:hover {
@@ -16,4 +18,5 @@ nav a:hover {
 
 .right {
     float: right;
+    display: block;
 }
