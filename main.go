@@ -2,9 +2,23 @@ package main
 
 import (
 	"html/template"
+	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
+
+var db *gorm.DB
+
+func init() {
+	var err error
+	db, err = gorm.Open("sqlite3", "test.db")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	db.AutoMigrate(&Book{}, &Item{}, &User{}, &Record{}, &Category{}, &Publisher{}, &Author{}, &Tag{})
+}
 
 func loadTemplate() (tpl *template.Template) {
 	tpl = template.Must(template.ParseGlob("templates/*.html"))

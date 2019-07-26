@@ -24,11 +24,9 @@ func init() {
 		Items: []Item{
 			Item{
 				Barcode: "A380",
-				Status:  StatusInside,
 			},
 			Item{
 				Barcode: "A381",
-				Status:  StatusLending,
 			},
 		},
 	}
@@ -36,12 +34,10 @@ func init() {
 	fakeItems = []Item{
 		Item{
 			Barcode: "A380",
-			Status:  StatusInside,
 			Book:    fakeBooks[0],
 		},
 		Item{
 			Barcode: "A381",
-			Status:  StatusLending,
 			Book:    fakeBooks[0],
 		},
 	}

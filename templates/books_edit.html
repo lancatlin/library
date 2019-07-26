@@ -1,0 +1,57 @@
+{{template "head" "書目修改"}}
+{{template "books_header" .}}
+<h1>{{.BookName}} 書目修改</h1>
+<div id="input_div">
+    <form action="/management/books/new" method="post">
+        <table>
+            <tr>
+                <td>書名</td>
+                <td><input type="text" name="bookname" id="bookname" value="{{.BookName}}"></td>
+            </tr>
+            <tr>
+                <td>作者/譯者</td>
+                {{range .Authors}}
+                <td><input type="text" name="author" value="{{.Name}}"></td>
+                {{end}}
+                <td><button>+</button></td>
+            </tr>
+            <tr>
+                <td>ISBN</td>
+                <td><input type="text" name="isbn" id="isbn" value="{{.ISBN}}"></td>
+            </tr>
+            <tr>
+                <td>出版社</td>
+                <td><input type="text" name="publisher" id="publisher" value="{{.Publisher}}"></td>
+            </tr>
+            <tr>
+                <td>出版年份</td>
+                <td><input type="number" name="year" id="year" value="{{.Year}}"></td>
+            </tr>
+            <tr>
+                <td>分類號</td>
+                <td><input type="text" name="classification" id="classification" value="{{.Classification}}"></td>
+            </tr>
+            <tr>
+                <td>分類</td>
+                <td><select name="category" id="category" >
+                    {{$category = .Category}}
+                    {{range .Categories}}
+                    <option value=".ID" {{if eq .Category.ID .ID}} selected {{end}}>{{.}}</option>
+                    {{end}}
+                </select></td>
+            </tr>
+            <tr>
+                <td>館藏數量</td>
+                <td><input type="number" name="items_amount" id="items_amount"></td>
+            </tr>
+            <tr>
+                <td>新書</td>
+                <td><input type="checkbox" name="new_book_label" id="new_book_label"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="新增"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{{template "footer" .}}

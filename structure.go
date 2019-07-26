@@ -1,6 +1,9 @@
 package main
 
 import (
+	"strings"
+	"time"
+
 	"github.com/jinzhu/gorm"
 )
 
@@ -29,6 +32,11 @@ const (
 	StatusMissing
 )
 
+var (
+	// BorrowingPeriods 為圖書館的借閱期限，預設為 30 天
+	BorrowingPeriods time.Duration = time.Hour * 24 * 30
+)
+
 type Role int
 
 const (
@@ -45,27 +53,39 @@ const (
 //	Has many Tags
 type Book struct {
 	gorm.Model
-	BookName             string
-	Authors              []Author
-	Publisher            Publisher
-	Year                 int
+	BookName string
+	// Many to many authors
+	Authors []Author `gorm:"many2many:book_authors"`
+	// belongs to one publisher
+	Publisher   Publisher
+	PublisherID int
+	Year        int
+	// belongs to one category
 	Category             Category
+	CategoryID           int
 	ClassificationNumber string
-	Items                []Item
-	Tags                 []Tag
-	Cover                string
-	Description          string
+	// has many items
+	Items []Item
+	// many to many tags
+	Tags        []Tag `gorm:"many2many:book_tags"`
+	Cover       string
+	Description string
 }
 
 func (b Book) Author() string {
-	return b.Authors[0].String()
+	// 將所有作者以頓號分隔排列
+	l := make([]string, len(b.Authors))
+	for i, v := range b.Authors {
+		l[i] = v.String()
+	}
+	return strings.Join(l, "、")
 }
 
 // Author is the structure that record the author data
 type Author struct {
 	gorm.Model
 	Name  string
-	Works []Book
+	Works []Book `gorm:"many2many:book_authors"`
 }
 
 func (a Author) String() string {
@@ -96,13 +116,29 @@ func (c Category) String() string {
 
 // Item is the instance of a book in the library
 type Item struct {
-	gorm.Model
 	Barcode      string `gorm:"primary_key"`
 	Book         Book
-	Status       Status
+	BookID       int
 	NewBookLabel string
-	Borrower     User
-	SupportBy    User
+	Supporter    User `gorm:"foreignkey:SupporterID"`
+	SupporterID  int
+	Records      []Record
+}
+
+func (i *Item) Status() Status {
+	record := i.Record()
+	if record == nil {
+		return StatusInside
+	}
+	if time.Now().Sub(record.LendingTime) > BorrowingPeriods {
+		return StatusMissing
+	}
+	return StatusLending
+}
+
+func (i *Item) Record() *Record {
+	// 返回還沒有完成的 Record，如果無返回 nil
+	return nil
 }
 
 // User the structure of users
@@ -113,8 +149,8 @@ type User struct {
 	Phone     string
 	Role      Role
 	Login     bool
-	Lendings  []Item
-	Donations []Item
+	Records   []Record `gorm:"foreignkey:BorrowerID"`
+	Donations []Item   `gorm:"foreignkey:SupporterID"`
 	Password  []byte
 }
 
@@ -128,4 +164,14 @@ type Tag struct {
 
 func (t Tag) String() string {
 	return t.Name
+}
+
+type Record struct {
+	gorm.Model
+	Borrower    User `gorm:"foreignkey:BorrowerID"`
+	BorrowerID  int
+	Item        Item
+	ItemID      int
+	LendingTime time.Time
+	ReturnTime  time.Time
 }
