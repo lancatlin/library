@@ -12,20 +12,22 @@ type Status int
 
 func (s Status) String() string {
 	switch s {
-	case 0:
+	case StatusUnknown:
+		return "未設定"
+	case StatusInside:
 		return "館內"
-	case 1:
+	case StatusLending:
 		return "借出中"
-	case 2:
+	case StatusMissing:
 		return "遺失"
-	default:
-		return ""
 	}
+	return ""
 }
 
 const (
+	StatusUnknown Status = iota
 	// StatusInside means the book is in the library
-	StatusInside Status = iota
+	StatusInside
 	// StatusLending means the book is lending by someone
 	StatusLending
 	// StatusMissing means the book is missing
@@ -59,6 +61,7 @@ type Book struct {
 	// belongs to one publisher
 	Publisher   Publisher
 	PublisherID int
+	ISBN        string
 	Year        int
 	// belongs to one category
 	Category             Category
@@ -106,8 +109,9 @@ func (p Publisher) String() string {
 // Classification is define by the library
 type Category struct {
 	gorm.Model
-	Name  string
-	Books []Book
+	Name   string
+	Books  []Book
+	Prefix string
 }
 
 func (c Category) String() string {

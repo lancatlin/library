@@ -1,0 +1,9 @@
+{{template "head" "匯入編目資料"}}
+{{template "books_header" .}}
+<h1>匯入編目資料</h1>
+<p>請先<a href="/static/import_example.csv">下載範例檔</a>，使用 Calc / Excel 開啟，將每個欄位貼入，存檔後上傳 CSV 檔</p>
+<form action="/management/books/import" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" id="">
+    <input type="submit" value="匯入">
+</form>
+{{template "footer" .}}

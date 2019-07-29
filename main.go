@@ -12,6 +12,7 @@ import (
 var db *gorm.DB
 
 func init() {
+	log.SetFlags(log.Lshortfile)
 	var err error
 	db, err = gorm.Open("sqlite3", "test.db")
 	if err != nil {
@@ -60,5 +61,26 @@ func main() {
 	})
 	r.GET("/management/books", books)
 	r.GET("/management/books/new", booksNew)
+	r.GET("/management/books/import", func(c *gin.Context) {
+		user := getUser(c)
+		if user.Role != RoleAdmin {
+			c.HTML(401, "401.html", user)
+		}
+		c.HTML(200, "books_import.html", user)
+	})
+	r.POST("/management/books/import", func(c *gin.Context) {
+		file, _, err := c.Request.FormFile("file")
+		if err != nil {
+			c.Error(err)
+			return
+		}
+		err = booksImport(file)
+		if err != nil {
+			log.Println(err)
+			c.Error(err)
+			return
+		}
+		c.String(200, "%s", "匯入成功")
+	})
 	r.Run("localhost:8080")
 }

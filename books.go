@@ -1,6 +1,9 @@
 package main
 
 import (
+	"log"
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -76,4 +79,40 @@ func booksNew(c *gin.Context) {
 		},
 	}
 	c.HTML(200, "books_new.html", page)
+}
+
+func (b *Book) newItem() Item {
+	item := Item{
+		Barcode:      b.genBarcode(),
+		NewBookLabel: b.genNewLabel(),
+		Book:         *b,
+	}
+	if err := db.Create(&item).Error; err != nil {
+		log.Fatalln(err)
+	}
+	if err := db.Commit().Error; err != nil {
+		log.Fatalln(err)
+	}
+	return item
+}
+
+func (b Book) genBarcode() string {
+	var count []int
+	query := `
+	SELECT COUNT(1) FROM books b
+	INNER JOIN items i ON b.id = i.book_id
+	WHERE b.category_id = ?
+	`
+	if err := db.Raw(query, b.Category.ID).Scan(&count).Error; err != nil {
+		log.Fatalln(err)
+	}
+	return b.Category.Prefix + strconv.Itoa(count[0]+1)
+}
+
+func (b Book) genNewLabel() string {
+	var count int
+	if err := db.Where(&Item{NewBookLabel: ""}).Find(&[]Item{}).Count(&count).Error; err != nil {
+		log.Fatalln(err)
+	}
+	return "N" + strconv.Itoa(count+1)
 }
