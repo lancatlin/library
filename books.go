@@ -97,16 +97,13 @@ func (b *Book) newItem() Item {
 }
 
 func (b Book) genBarcode() string {
-	var count []int
-	query := `
-	SELECT COUNT(1) FROM books b
-	INNER JOIN items i ON b.id = i.book_id
-	WHERE b.category_id = ?
-	`
-	if err := db.Raw(query, b.Category.ID).Scan(&count).Error; err != nil {
+	var category Category
+	if err := db.Model(&b).Related(&category).Error; err != nil {
 		log.Fatalln(err)
 	}
-	return b.Category.Prefix + strconv.Itoa(count[0]+1)
+	category.Amount++
+	db.Save(&category)
+	return category.Prefix + strconv.Itoa(category.Amount)
 }
 
 func (b Book) genNewLabel() string {
