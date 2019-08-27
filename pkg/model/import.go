@@ -1,4 +1,4 @@
-package main
+package model
 
 import (
 	"encoding/csv"
@@ -12,7 +12,7 @@ func booksImport(file io.Reader) (err error) {
 	r := csv.NewReader(file)
 	r.Comma = ' '
 	// 第一行不讀
-	columes, err := r.Read()
+	columns, err := r.Read()
 	if err != nil {
 		return err
 	}
@@ -24,13 +24,13 @@ func booksImport(file io.Reader) (err error) {
 			log.Fatalln(err)
 		}
 		data := make(map[string]string)
-		for i, v := range columes {
+		for i, v := range columns {
 			data[v] = line[i]
 		}
 		log.Println(data)
 
 		book := Book{
-			BookName:             data["BookName"],
+			Name:                 data["BookName"],
 			ISBN:                 data["ISBN"],
 			Description:          data["Description"],
 			Cover:                data["CoverImage"],
@@ -73,23 +73,18 @@ func booksImport(file io.Reader) (err error) {
 			log.Println(tag)
 			book.Tags[i] = tag
 		}
-		// 館藏
-		amount, err := strconv.Atoi(data["ItemsAmount"])
-		if err != nil {
-			log.Println(err)
-		}
-		log.Println(amount)
-		book.Items = make([]Item, amount)
-		for i := 0; i < amount; i++ {
-			item := book.newItem()
-			log.Println(item)
-		}
 		// 年代
 		year, err := strconv.Atoi(data["Year"])
 		if err != nil {
 			log.Fatalln(err)
 		}
 		book.Year = year
+		// 館藏
+		book.Items = make([]Item, amount)
+		for i := 0; i < amount; i++ {
+			item := book.newItem()
+			log.Println(item)
+		}
 		// Create
 		if err = db.Create(&book).Error; err != nil {
 			log.Fatal(err)
