@@ -46,6 +46,11 @@ func (b Book) Author() string {
 	return strings.Join(l, "、")
 }
 
+// NewItem generate a new item of this book
+func (b Book) NewItem(id string) Item {
+	return b.newItem(id)
+}
+
 func (b *Book) newItem(id string) Item {
 	item := Item{
 		Barcode:      b.genBarcode(),

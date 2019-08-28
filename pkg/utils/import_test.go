@@ -1,9 +1,11 @@
-package model
+package utils
 
 import (
 	"log"
 	"os"
 	"testing"
+
+	"github.com/lancatlin/library/pkg/model"
 )
 
 func TestImport(t *testing.T) {
@@ -11,11 +13,11 @@ func TestImport(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	db.Create(&Category{Name: "自然文學", Prefix: "A"})
-	var categories []Category
+	db.Create(&model.Category{Name: "自然文學", Prefix: "A"})
+	var categories []model.Category
 	db.Find(&categories)
 	log.Println(categories)
-	err = booksImport(file)
+	err = ImportBooks(file)
 	if err != nil {
 		t.Error(err)
 	}

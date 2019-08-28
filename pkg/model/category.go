@@ -8,6 +8,7 @@ type Category struct {
 	Name   string
 	Books  []Book
 	Prefix string
+	Amount int
 }
 
 func (c Category) String() string {

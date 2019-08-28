@@ -1,3 +1,7 @@
+/*
+Package model defines the structure.
+model need to set the db variable *gorm.DB
+*/
 package model
 
 import (
@@ -10,6 +14,8 @@ var db *gorm.DB
 
 // SetDB return the db
 func SetDB(theDB *gorm.DB) {
-	theDB.AutoMigrate(&Book{}, &Item{}, &User{}, &Record{}, &Category{}, &Publisher{}, &Author{}, &Tag{})
+	if err := theDB.AutoMigrate(&Book{}, &Item{}, &User{}, &Record{}, &Category{}, &Publisher{}, &Author{}, &Tag{}).Error; err != nil {
+		panic(err)
+	}
 	db = theDB
 }
