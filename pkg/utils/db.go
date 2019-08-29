@@ -11,6 +11,14 @@ import (
 
 var db *gorm.DB
 
+func init() {
+	db, err := gorm.Open("sqlite3", "test.sqlite")
+	if err != nil {
+		panic(err)
+	}
+	SetDB(db)
+}
+
 // SetDB return the db
 func SetDB(theDB *gorm.DB) {
 	if err := theDB.AutoMigrate(&model.Book{}, &model.Item{}, &model.User{}, &model.Record{}, &model.Category{}, &model.Publisher{}, &model.Author{}, &model.Tag{}).Error; err != nil {

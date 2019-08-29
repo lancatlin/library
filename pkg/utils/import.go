@@ -5,11 +5,9 @@ import (
 	"errors"
 	"io"
 	"log"
-	"regexp"
 	"strconv"
 	"strings"
 
-	"github.com/jinzhu/gorm"
 	"github.com/lancatlin/library/pkg/model"
 )
 
@@ -94,36 +92,4 @@ func parse(data map[string]string) (err error) {
 	db.First(&book, book.ID)
 	log.Println(book)
 	return nil
-}
-
-func parseAuthors(s string) (result []model.Author) {
-	authors := regexp.MustCompile("([,;、，\n] *)+").Split(s, -1)
-	log.Println(authors)
-	result = make([]model.Author, len(authors))
-	// 找尋已經有的作家，如果存在就使用，否則創建
-	for i, v := range authors {
-		var author model.Author
-		res := db.FirstOrInit(&author, model.Author{Name: v})
-		if res.Error != nil {
-			log.Fatalln(res.Error)
-		}
-		result[i] = author
-	}
-	return
-}
-
-func getCategory(s string) (c model.Category, err error) {
-	if !regexp.MustCompile("^[A-Z][a-z]*[0-9]+$").MatchString(s) {
-		err = ErrInvalidID
-		return
-	}
-	prefix := regexp.MustCompile("^[A-Z][a-z]*").FindString(s)
-	if err = db.Where("prefix = ?", prefix).First(&c).Error; err != nil {
-		if gorm.IsRecordNotFoundError(err) {
-			err = ErrCategoryNotDefined
-			return
-		}
-		panic(err)
-	}
-	return
 }
