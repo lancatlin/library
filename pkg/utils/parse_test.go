@@ -24,3 +24,22 @@ func TestParseAuthors(t *testing.T) {
 		}
 	}
 }
+
+func TestParseYear(t *testing.T) {
+	data := map[string]int{
+		"2011年":   2011,
+		"94年":     2005,
+		"1994年二版": 1994,
+		"106":     2017,
+		"2018":    2018,
+		" ":       0,
+		"第2018年":  2018,
+		"107.3":   2018,
+		"一百零七年": 0,
+	}
+	for q, a := range data {
+		if y := parseYear(q); y != a {
+			t.Errorf("Year not equal: want %d have %d\n", a, y)
+		}
+	}
+}
