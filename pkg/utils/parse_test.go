@@ -35,11 +35,59 @@ func TestParseYear(t *testing.T) {
 		" ":       0,
 		"第2018年":  2018,
 		"107.3":   2018,
-		"一百零七年": 0,
+		"一百零七年":   0,
 	}
 	for q, a := range data {
 		if y := parseYear(q); y != a {
 			t.Errorf("Year not equal: want %d have %d\n", a, y)
+		}
+	}
+}
+
+func TestParseISBN(t *testing.T) {
+	data := map[string]int{
+		"978-986-89294-9-4": 9789868929494,
+		"978-957-13-6810-8": 9789571368108,
+		"9789869611732":     9789869611732,
+		"979 986 961 1732":  9799869611732,
+		"9799869611732\n":   9799869611732,
+	}
+	wrong := map[string]error{
+		"978986892949":     ErrInvalidISBNLength,
+		"9a8957-13-6810-8": ErrISBNParseError,
+		"979 986 961 1732": nil,
+	}
+	for q, a := range data {
+		if r, err := parseISBN(q); r != a {
+			if err != nil {
+				t.Error(err)
+			}
+			t.Errorf("ISBN not equal: want %d have %d\n", a, r)
+		}
+	}
+	for q, a := range wrong {
+		if _, err := parseISBN(q); err != a {
+			t.Errorf("ISBN error not equal: want %s have %s", a, err)
+		}
+	}
+}
+
+func TestParseClassNum(t *testing.T) {
+	data := map[string][]string{
+		"783.3886":          []string{"783.3886"},
+		"733.9/121.9/129.4": []string{"733.9", "121.9", "129.4"},
+		"486":               []string{"486"},
+		"796 758.21":        []string{"796", "758.21"},
+	}
+	for q, a := range data {
+		c := parseClassNum(q)
+		if len(c) != len(a) {
+			t.Errorf("ClassNum not equal: want %s have %s", a, c)
+		}
+		for i := range c {
+			if a[i] != c[i].String() {
+				t.Errorf("ClassNum not equal: want %s have %s", a, c)
+			}
 		}
 	}
 }

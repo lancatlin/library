@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"errors"
 	"log"
 	"regexp"
 	"strconv"
@@ -9,6 +10,13 @@ import (
 	"github.com/dlclark/regexp2"
 	"github.com/jinzhu/gorm"
 	"github.com/lancatlin/library/pkg/model"
+)
+
+var (
+	// ErrInvalidISBNLength is threw when isbn is in a invalid length(not 10 or 13)
+	ErrInvalidISBNLength = errors.New("utils: the ISBN length is invalid")
+	// ErrISBNParseError is threw when strconv.Atoi throw an error
+	ErrISBNParseError = errors.New("utils: the ISBN is invalid")
 )
 
 func parseAuthors(s string) (result []model.Author) {
@@ -60,6 +68,33 @@ func parseYear(s string) (year int) {
 		// Not C.E.
 		// Treat as ROC
 		year += 1911
+	}
+	return
+}
+
+func parseISBN(s string) (isbn int, err error) {
+	isbnString := regexp.MustCompile(`[- \s]`).ReplaceAllString(s, "")
+	if l := len(isbnString); l != 10 && l != 13 {
+		err = ErrInvalidISBNLength
+		return
+	}
+	isbn, err = strconv.Atoi(isbnString)
+	if err != nil {
+		err = ErrISBNParseError
+		return
+	}
+	return
+}
+
+func parseClassNum(s string) (nums []model.ClassNum) {
+	matches := regexp.MustCompile(`\d+\.?\d*`).FindAllString(s, -1)
+	nums = make([]model.ClassNum, len(matches))
+	for i, v := range matches {
+		var err error
+		nums[i], err = model.NewClassNum(v)
+		if err != nil {
+			panic(err)
+		}
 	}
 	return
 }

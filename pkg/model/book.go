@@ -25,9 +25,9 @@ type Book struct {
 	ISBN        string
 	Year        int
 	// belongs to one category
-	Category             Category
-	CategoryID           int
-	ClassificationNumber string
+	Category   Category
+	CategoryID int
+	ClassNums  []ClassNum `gorm:"many2many:book_class_nums"`
 	// has many items
 	Items []Item
 	// many to many tags

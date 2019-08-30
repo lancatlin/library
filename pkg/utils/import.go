@@ -18,12 +18,21 @@ var (
 	ErrInvalidID = errors.New("utils: ID is invalid")
 )
 
+type raw struct {
+	Items     []string
+	BookName  string
+	Authors   string
+	Publisher string
+	Supporter string
+}
+
 // ImportBooks load a csv file an parse it into database
 // the csv file need the columns below:
-// ID, BookName, Authors, Publisher, ISBN, Description, CoverImage, ClassificationNumber, Year, Tags
+// ID, BookName, Authors, Publisher, ISBN, Description, CoverImage, ClassNum, Year, Tags
 // ID must be an defined category prefix and a number, like A147, C5692... in regex: '^[A-Z][0-9]+$'
 // Authors must be a string split with ',' or ';'. the content will be split by '([,;、，\n] *)+'
 // Tags is a string join by ',': also split by '([,;、，\n] *)+'
+// If a book has multiple items, write the ID only, leave the others blank.
 func ImportBooks(file io.Reader) (err error) {
 	r := csv.NewReader(file)
 	r.Comma = ' '
@@ -54,11 +63,10 @@ func ImportBooks(file io.Reader) (err error) {
 
 func parse(data map[string]string) (err error) {
 	book := model.Book{
-		Name:                 data["BookName"],
-		ISBN:                 data["ISBN"],
-		Description:          data["Description"],
-		Cover:                data["CoverImage"],
-		ClassificationNumber: data["ClassificationNumber"],
+		Name:        data["BookName"],
+		ISBN:        data["ISBN"],
+		Description: data["Description"],
+		Cover:       data["CoverImage"],
 	}
 	book.Authors = parseAuthors(data["Authors"])
 	// 出版社
