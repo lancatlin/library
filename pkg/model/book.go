@@ -2,7 +2,6 @@ package model
 
 import (
 	"log"
-	"strconv"
 	"strings"
 
 	"github.com/jinzhu/gorm"
@@ -51,38 +50,16 @@ func (b Book) NewItem(id string) Item {
 	return b.newItem(id)
 }
 
-func (b *Book) newItem(id string) Item {
-	item := Item{
-		Barcode:      b.genBarcode(),
-		NewBookLabel: b.genNewLabel(),
-		Book:         *b,
+func (b Book) newItem(id string) Item {
+	var category Category
+	if err := db.Model(&b).Related(&category).Error; err != nil {
+		log.Fatalln(err)
 	}
+	var item Item
+	category.append(&item)
+	item.Book = b
 	if err := db.Create(&item).Error; err != nil {
 		log.Fatalln(err)
 	}
-	if err := db.Commit().Error; err != nil {
-		log.Fatalln(err)
-	}
 	return item
-}
-
-func (b Book) genBarcode() string {
-	var count []int
-	query := `
-	SELECT COUNT(1) FROM books b
-	INNER JOIN items i ON b.id = i.book_id
-	WHERE b.category_id = ?
-	`
-	if err := db.Raw(query, b.Category.ID).Scan(&count).Error; err != nil {
-		log.Fatalln(err)
-	}
-	return b.Category.Prefix + strconv.Itoa(count[0]+1)
-}
-
-func (b Book) genNewLabel() string {
-	var count int
-	if err := db.Where(&Item{NewBookLabel: ""}).Find(&[]Item{}).Count(&count).Error; err != nil {
-		log.Fatalln(err)
-	}
-	return "N" + strconv.Itoa(count+1)
 }

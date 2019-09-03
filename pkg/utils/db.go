@@ -21,7 +21,7 @@ func init() {
 
 // SetDB return the db
 func SetDB(theDB *gorm.DB) {
-	if err := theDB.AutoMigrate(&model.Book{}, &model.Item{}, &model.User{}, &model.Record{}, &model.Category{}, &model.Publisher{}, &model.Author{}, &model.Tag{}).Error; err != nil {
+	if err := theDB.AutoMigrate(&model.Book{}, &model.Item{}, &model.Account{}, &model.Record{}, &model.Category{}, &model.Publisher{}, &model.Author{}, &model.Tag{}).Error; err != nil {
 		panic(err)
 	}
 	db = theDB

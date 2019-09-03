@@ -9,7 +9,7 @@ import (
 // Record record the data of a lending event
 type Record struct {
 	gorm.Model
-	Borrower    User `gorm:"foreignkey:BorrowerID"`
+	Borrower    Account `gorm:"foreignkey:BorrowerID"`
 	BorrowerID  int
 	Item        Item
 	ItemID      int
