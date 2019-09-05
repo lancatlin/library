@@ -1,8 +1,12 @@
 package model
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"log"
+	"os"
 	"regexp"
 	"strconv"
 
@@ -62,18 +66,50 @@ func findCategoryFromBarcode(barcode string) (category Category, err error) {
 	return
 }
 
-func getCategoryAndCheckBarcode(barcode string) (category Category, err error) {
-	if !isValidBarcodeFormat(barcode) {
-		err = ErrInvalidBarcodeFormat
-		return
-	}
-	category, err = findCategoryFromBarcode(barcode)
-	if err != nil {
-		return
-	}
-	if !category.isRightNumber(barcode) {
-		err = fmt.Errorf("utils error: %s is not the right number", barcode)
-		return
+func GetCategory(barcodes []string) (category Category, err error) {
+	isSet := false
+	for _, barcode := range barcodes {
+		if !isValidBarcodeFormat(barcode) {
+			err = ErrInvalidBarcodeFormat
+			return
+		}
+		var c Category
+		c, err = findCategoryFromBarcode(barcode)
+		if err != nil {
+			return
+		}
+		if isSet && category.ID != c.ID {
+			err = fmt.Errorf("%v has different categories prefix", barcodes)
+			return
+		}
+		category = c
+		isSet = true
 	}
 	return
+}
+
+func InitCategoriesFromConfigs() {
+	file, err := os.Open("../../configs/categories.json")
+	if err != nil {
+		panic(err)
+	}
+	categories := loadCategoriesFromJSON(file)
+	initCategories(categories)
+}
+
+func loadCategoriesFromJSON(file io.Reader) (categories []Category) {
+	dec := json.NewDecoder(file)
+	if err := dec.Decode(&categories); err != nil {
+		panic(err)
+	}
+	log.Println(categories)
+	return
+}
+
+func initCategories(categories []Category) {
+	for _, category := range categories {
+		if err := db.Where(category).FirstOrCreate(&category).Error; err != nil {
+			panic(err)
+		}
+	}
 }

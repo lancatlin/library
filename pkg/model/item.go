@@ -1,7 +1,9 @@
 package model
 
 import (
-	"fmt"
+	"log"
+	"regexp"
+	"strconv"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -61,27 +63,21 @@ func (i *Item) ProcessingRecord() *Record {
 	return nil
 }
 
-func (book *Book) NewItem(supporter string) (item Item, err error) {
-	return book.newItem("", supporter)
-}
-
-func (book *Book) NewItemWithBarcode(barcode, supporter string) (item Item, err error) {
-	return book.newItem(barcode, supporter)
-}
-
-func (book *Book) newItem(barcode, supporter string) (item Item, err error) {
-	category, err := getCategoryAndCheckBarcode(barcode)
-	if book.Category.Name == "" {
-		book.Category = category
-	} else if category.Name != book.Category.Name {
-		err = fmt.Errorf(`model error: %s has wrong prefix. want %s have %s`, barcode, book.Category.Prefix, category.Prefix)
+func (i *Item) AfterCreate(tx *gorm.DB) (err error) {
+	if err = tx.Where("id = ?", i.ID).Preload("Book").Preload("Book.Category").First(&i).Error; err != nil {
+		log.Println(err)
 		return
 	}
-	item = Item{
-		Barcode:   barcode,
-		Book:      *book,
-		Supporter: supporter,
+	category := i.Book.Category
+	if number := i.getBarcodeNumber(); number > category.Amount {
+		category.Amount = number
+		return tx.Save(&category).Error
 	}
-	book.Category.addAmountAndSave()
-	return
+	return nil
+}
+
+func (i Item) getBarcodeNumber() int {
+	numberString := regexp.MustCompile(`\d+`).FindString(i.Barcode)
+	number, _ := strconv.Atoi(numberString)
+	return number
 }

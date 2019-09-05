@@ -31,4 +31,6 @@ func SetDB(theDB *gorm.DB) {
 		panic(err)
 	}
 	db = theDB
+	model.SetDB(db)
+	model.InitCategoriesFromConfigs()
 }

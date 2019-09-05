@@ -3,6 +3,7 @@ package utils
 import (
 	"encoding/csv"
 	"errors"
+	"fmt"
 	"io"
 	"log"
 
@@ -66,24 +67,25 @@ func parse(data map[string]string) (err error) {
 		Cover:       data["CoverImage"],
 	}
 	book.Authors = parseAuthors(data["Authors"])
-	book.ISBN, err = parseISBN(data["ISBN"])
-	if err != nil {
-		return
-	}
+	book.ISBN = parseISBN(data["ISBN"])
 	// 出版社
 	book.Publisher = parsePublisher(data["Publisher"])
 	// 標籤
 	book.Tags = parseTagsAndCreate(data["Tags"])
 	// 年代
 	book.Year = parseYear(data["Year"])
-	// Create
-	if err = db.Create(&book).Error; err != nil {
-		log.Fatal(err)
-	}
+	book.ClassNums = parseClassNum(data["ClassNum"])
 	supporters := parseSupporter(data["Supporter"])
 	barcodes := parseBarcodes(data["Barcodes"])
+	if len(barcodes) == 0 {
+		return fmt.Errorf("Cannot create item without barcodes")
+	}
 	if len(supporters) > len(barcodes) {
 		err = errors.New("Invalid supporter number")
+		return
+	}
+	book.Category, err = model.GetCategory(barcodes)
+	if err != nil {
 		return
 	}
 	book.Items = make([]model.Item, len(barcodes))
@@ -100,7 +102,10 @@ func parse(data map[string]string) (err error) {
 		}
 		book.Items[i] = item
 	}
-	db.Save(&book)
-	log.Println(book)
+	// Create
+	if err = db.Create(&book).Error; err != nil {
+		log.Fatal(err)
+	}
+	log.Println(book.ID)
 	return nil
 }

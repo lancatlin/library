@@ -52,22 +52,19 @@ func TestParseISBN(t *testing.T) {
 		"979 986 961 1732":  9799869611732,
 		"9799869611732\n":   9799869611732,
 	}
-	wrong := map[string]error{
-		"978986892949":     ErrInvalidISBNLength,
-		"9a8957-13-6810-8": ErrISBNParseError,
-		"979 986 961 1732": nil,
+	wrong := []string{
+		"978986892949",
+		"9a8957-13-6810-8",
+		"979 986 961 1732",
 	}
 	for q, a := range data {
-		if r, err := parseISBN(q); r != a {
-			if err != nil {
-				t.Error(err)
-			}
+		if r := parseISBN(q); r != a {
 			t.Errorf("ISBN not equal: want %d have %d\n", a, r)
 		}
 	}
-	for q, a := range wrong {
-		if _, err := parseISBN(q); err != a {
-			t.Errorf("ISBN error not equal: want %s have %s", a, err)
+	for _, q := range wrong {
+		if r := parseISBN(q); r != 0 {
+			t.Errorf("ISBN error not equal: want %d have %d", 0, r)
 		}
 	}
 }

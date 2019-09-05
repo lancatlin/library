@@ -72,16 +72,15 @@ func parseYear(s string) (year int) {
 	return
 }
 
-func parseISBN(s string) (isbn int, err error) {
+func parseISBN(s string) (isbn int) {
 	isbnString := regexp.MustCompile(`[- \s]`).ReplaceAllString(s, "")
 	if l := len(isbnString); l != 10 && l != 13 {
-		err = ErrInvalidISBNLength
+		isbn = 0
 		return
 	}
-	isbn, err = strconv.Atoi(isbnString)
+	isbn, err := strconv.Atoi(isbnString)
 	if err != nil {
-		err = ErrISBNParseError
-		return
+		isbn = 0
 	}
 	return
 }
@@ -111,7 +110,7 @@ func parsePublisher(s string) (publisher model.Publisher) {
 }
 
 func splitByCommaAndSemicolon(s string) []string {
-	return regexp.MustCompile(`[,;] *`).Split(s, -1)
+	return regexp.MustCompile(`[,;，、] *`).Split(s, -1)
 }
 
 func parseTagsAndCreate(s string) (tags []model.Tag) {

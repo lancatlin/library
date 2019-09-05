@@ -53,3 +53,19 @@ func (b *Book) Create() {
 		panic(err)
 	}
 }
+
+func (book *Book) NewItem(supporter string) (item Item, err error) {
+	return book.newItem("", supporter)
+}
+
+func (book *Book) NewItemWithBarcode(barcode, supporter string) (item Item, err error) {
+	return book.newItem(barcode, supporter)
+}
+
+func (book *Book) newItem(barcode, supporter string) (item Item, err error) {
+	item = Item{
+		Barcode:   barcode,
+		Supporter: supporter,
+	}
+	return
+}
