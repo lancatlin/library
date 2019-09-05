@@ -9,16 +9,17 @@ import (
 )
 
 func TestImport(t *testing.T) {
-	file, err := os.Open("./static/import_example.csv")
+	file, err := os.Open("./testData/success_example.csv")
 	if err != nil {
 		t.Error(err)
 	}
+	model.SetDB(db)
 	db.Create(&model.Category{Name: "自然文學", Prefix: "A"})
 	var categories []model.Category
 	db.Find(&categories)
 	log.Println(categories)
-	err = ImportBooks(file)
-	if err != nil {
-		t.Error(err)
+	errList := ImportBooks(file)
+	for _, v := range errList {
+		t.Error(v)
 	}
 }

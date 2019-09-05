@@ -39,7 +39,7 @@ func parseAuthors(s string) (result []model.Author) {
 	return
 }
 
-func getCategory(s string) (c model.Category, err error) {
+func parseCategory(s string) (c model.Category, err error) {
 	if !regexp.MustCompile("^[A-Z][a-z]*[0-9]+$").MatchString(s) {
 		err = ErrInvalidID
 		return
@@ -97,4 +97,39 @@ func parseClassNum(s string) (nums []model.ClassNum) {
 		}
 	}
 	return
+}
+
+func parseBarcodes(s string) []string {
+	return regexp.MustCompile(`[A-Z][a-z]*\d+`).FindAllString(s, -1)
+}
+
+func parsePublisher(s string) (publisher model.Publisher) {
+	if err := db.FirstOrInit(&publisher, model.Publisher{Name: s}).Error; err != nil {
+		panic(err)
+	}
+	return
+}
+
+func splitByCommaAndSemicolon(s string) []string {
+	return regexp.MustCompile(`[,;] *`).Split(s, -1)
+}
+
+func parseTagsAndCreate(s string) (tags []model.Tag) {
+	tagsName := splitByCommaAndSemicolon(s)
+	tags = make([]model.Tag, len(tagsName))
+	for i, name := range tagsName {
+		tags[i] = findOrCreateTag(name)
+	}
+	return
+}
+
+func findOrCreateTag(name string) (tag model.Tag) {
+	if err := db.FirstOrCreate(&tag, model.Tag{Name: name}).Error; err != nil {
+		panic(err)
+	}
+	return
+}
+
+func parseSupporter(s string) (supporters []string) {
+	return splitByCommaAndSemicolon(s)
 }

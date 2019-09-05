@@ -5,6 +5,8 @@ utils need to set the db variable *gorm.DB
 package utils
 
 import (
+	"os"
+
 	"github.com/jinzhu/gorm"
 	"github.com/lancatlin/library/pkg/model"
 )
@@ -12,7 +14,11 @@ import (
 var db *gorm.DB
 
 func init() {
-	db, err := gorm.Open("sqlite3", "test.sqlite")
+	filename := "test.sqlite"
+	if err := os.Remove(filename); err != nil {
+		panic(err)
+	}
+	db, err := gorm.Open("sqlite3", filename)
 	if err != nil {
 		panic(err)
 	}

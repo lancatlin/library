@@ -5,8 +5,6 @@ import (
 	"errors"
 	"io"
 	"log"
-	"strconv"
-	"strings"
 
 	"github.com/lancatlin/library/pkg/model"
 )
@@ -18,14 +16,6 @@ var (
 	ErrInvalidID = errors.New("utils: ID is invalid")
 )
 
-type raw struct {
-	Items     []string
-	BookName  string
-	Authors   string
-	Publisher string
-	Supporter string
-}
-
 // ImportBooks load a csv file an parse it into database
 // the csv file need the columns below:
 // ID, BookName, Authors, Publisher, ISBN, Description, CoverImage, ClassNum, Year, Tags
@@ -33,71 +23,84 @@ type raw struct {
 // Authors must be a string split with ',' or ';'. the content will be split by '([,;、，\n] *)+'
 // Tags is a string join by ',': also split by '([,;、，\n] *)+'
 // If a book has multiple items, write the ID only, leave the others blank.
-func ImportBooks(file io.Reader) (err error) {
+func ImportBooks(file io.Reader) (errList []error) {
+	raws := readRaws(file)
+	for _, raw := range raws {
+		err := parse(raw)
+		if err != nil {
+			errList = append(errList, err)
+		}
+	}
+	return
+}
+
+func readRaws(file io.Reader) (raws []map[string]string) {
 	r := csv.NewReader(file)
-	r.Comma = ' '
-	// 第一行不讀
-	columns, err := r.Read()
+	allRaws, err := r.ReadAll()
 	if err != nil {
-		return err
+		panic(err)
 	}
-	for {
-		line, err := r.Read()
-		if err == io.EOF {
-			break
-		} else if err != nil {
-			log.Fatalln(err)
-		}
-		data := make(map[string]string)
-		for i, v := range columns {
-			data[v] = line[i]
-		}
-		log.Println(data)
-		if err := parse(data); err != nil {
-			log.Println(err)
-			return err
-		}
+	if len(allRaws) <= 1 {
+		return
 	}
-	return nil
+	columns := allRaws[0]
+	raws = make([]map[string]string, len(allRaws)-1)
+	for i, line := range allRaws[1:] {
+		raws[i] = convertToMap(columns, line)
+	}
+	return
+}
+
+func convertToMap(columns, src []string) (dest map[string]string) {
+	dest = make(map[string]string)
+	for i, column := range columns {
+		dest[column] = src[i]
+	}
+	return
 }
 
 func parse(data map[string]string) (err error) {
 	book := model.Book{
 		Name:        data["BookName"],
-		ISBN:        data["ISBN"],
 		Description: data["Description"],
 		Cover:       data["CoverImage"],
 	}
 	book.Authors = parseAuthors(data["Authors"])
-	// 出版社
-	var publisher model.Publisher
-	if err = db.FirstOrInit(&publisher, model.Publisher{Name: data["Publisher"]}).Error; err != nil {
-		log.Fatalln(err)
-	}
-	book.Publisher = publisher
-	// 標籤
-	tags := strings.Split(data["Tags"], ",")
-	log.Println(tags)
-	book.Tags = make([]model.Tag, len(tags))
-	for i, v := range tags {
-		var tag model.Tag
-		if err = db.FirstOrCreate(&tag, model.Tag{Name: v}).Error; err != nil {
-			log.Fatalln(err)
-		}
-		log.Println(tag)
-		book.Tags[i] = tag
-	}
-	// 年代
-	year, err := strconv.Atoi(data["Year"])
+	book.ISBN, err = parseISBN(data["ISBN"])
 	if err != nil {
-		log.Fatalln(err)
+		return
 	}
-	book.Year = year
+	// 出版社
+	book.Publisher = parsePublisher(data["Publisher"])
+	// 標籤
+	book.Tags = parseTagsAndCreate(data["Tags"])
+	// 年代
+	book.Year = parseYear(data["Year"])
 	// Create
 	if err = db.Create(&book).Error; err != nil {
 		log.Fatal(err)
 	}
-	db.First(&book, book.ID)
+	supporters := parseSupporter(data["Supporter"])
+	barcodes := parseBarcodes(data["Barcodes"])
+	if len(supporters) > len(barcodes) {
+		err = errors.New("Invalid supporter number")
+		return
+	}
+	book.Items = make([]model.Item, len(barcodes))
+	for i, barcode := range barcodes {
+		supporter := ""
+		if len(supporters)-1 >= i {
+			supporter = supporters[i]
+		}
+		var item model.Item
+		item, err = book.NewItemWithBarcode(barcode, supporter)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		book.Items[i] = item
+	}
+	db.Save(&book)
 	log.Println(book)
 	return nil
 }

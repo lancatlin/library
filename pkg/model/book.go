@@ -1,7 +1,6 @@
 package model
 
 import (
-	"log"
 	"strings"
 
 	"github.com/jinzhu/gorm"
@@ -21,7 +20,7 @@ type Book struct {
 	// belongs to one publisher
 	Publisher   Publisher
 	PublisherID int
-	ISBN        string
+	ISBN        int
 	Year        int
 	// belongs to one category
 	Category   Category
@@ -45,21 +44,12 @@ func (b Book) Author() string {
 	return strings.Join(l, "、")
 }
 
-// NewItem generate a new item of this book
-func (b Book) NewItem(id string) Item {
-	return b.newItem(id)
+func (c Category) checkAndGenerateBarcode() string {
+	return c.generateBarcode()
 }
 
-func (b Book) newItem(id string) Item {
-	var category Category
-	if err := db.Model(&b).Related(&category).Error; err != nil {
-		log.Fatalln(err)
+func (b *Book) Create() {
+	if err := db.Create(b).Error; err != nil {
+		panic(err)
 	}
-	var item Item
-	category.append(&item)
-	item.Book = b
-	if err := db.Create(&item).Error; err != nil {
-		log.Fatalln(err)
-	}
-	return item
 }
