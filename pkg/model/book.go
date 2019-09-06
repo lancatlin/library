@@ -85,3 +85,12 @@ func (book *Book) InitItems(barcodes, supporters []string) (err error) {
 	}
 	return nil
 }
+
+func (b Book) Equal(obj interface{}) bool {
+	if book, ok := obj.(Book); ok {
+		if b.ID == book.ID {
+			return true
+		}
+	}
+	return false
+}

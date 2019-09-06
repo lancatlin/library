@@ -1,8 +1,12 @@
 package search
 
-import "testing"
+import (
+	"testing"
 
-func TestSearchByKey(t *testing.T) {
+	"github.com/lancatlin/library/pkg/model"
+)
+
+func TestSearchBook(t *testing.T) {
 	word := "台灣"
 	column := "name"
 	answer := []string{
@@ -14,7 +18,8 @@ func TestSearchByKey(t *testing.T) {
 		"山災地變人造孽-21世紀台灣主流的土石亂流",
 		"我的水中夥伴-生物學家談台灣溪流魚類和環境故事",
 	}
-	checkEqual(word, column, answer, t)
+	checkEqualBooks(word, column, answer, t)
+
 	word = "957"
 	column = "isbn"
 	answer = []string{
@@ -43,17 +48,43 @@ func TestSearchByKey(t *testing.T) {
 		"綠島金夢",
 		"臺灣生態社區的故事",
 	}
-	checkEqual(word, column, answer, t)
+	checkEqualBooks(word, column, answer, t)
 }
 
-func checkEqual(word, column string, answer []string, t *testing.T) {
-	books := searchByColumn(word, column)
+func checkEqualBooks(word, column string, answer []string, t *testing.T) {
+	var books []model.Book
+	if err := searchByColumn(&books, word, column); err != nil {
+		t.Error(err)
+	}
 	if len(books) != len(answer) {
 		t.Errorf("answer length not equal: %v %v", answer, books)
 	}
 	for i, book := range books {
 		if book.Name != answer[i] {
 			t.Errorf(`Answer not equal: want %s have %s`, answer[i], book.Name)
+		}
+	}
+}
+
+type dog int
+
+func (d dog) Equal(obj interface{}) bool {
+	if theDog, ok := obj.(dog); ok {
+		if int(theDog) == int(d) {
+			return true
+		}
+	}
+	return false
+}
+func TestMerge(t *testing.T) {
+	d1 := []model.Merger{dog(1), dog(2), dog(3), dog(5), dog(6)}
+	d2 := []model.Merger{dog(3), dog(4), dog(5), dog(8), dog(9)}
+	answer := []int{1, 2, 3, 5, 6, 4, 8, 9}
+	result := merge(d1, d2)
+	for i := range answer {
+		dog := result[i].(dog)
+		if int(dog) != answer[i] {
+			t.Errorf("Answer not equal: want %d got %d", answer[i], dog)
 		}
 	}
 }
