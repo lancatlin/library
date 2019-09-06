@@ -61,7 +61,6 @@ func parseYear(s string) (year int) {
 	yearString := regexp.MustCompile(`\d+`).FindString(s)
 	year, err := strconv.Atoi(yearString)
 	if err != nil {
-		log.Println(err)
 		return 0
 	}
 	if len(yearString) != 4 {
@@ -123,7 +122,7 @@ func parseTagsAndCreate(s string) (tags []model.Tag) {
 }
 
 func findOrCreateTag(name string) (tag model.Tag) {
-	if err := db.FirstOrCreate(&tag, model.Tag{Name: name}).Error; err != nil {
+	if err := db.FirstOrInit(&tag, model.Tag{Name: name}).Error; err != nil {
 		panic(err)
 	}
 	return

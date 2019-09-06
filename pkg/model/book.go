@@ -69,3 +69,19 @@ func (book *Book) newItem(barcode, supporter string) (item Item, err error) {
 	}
 	return
 }
+func (book *Book) InitItems(barcodes, supporters []string) (err error) {
+	book.Items = make([]Item, len(barcodes))
+	for i, barcode := range barcodes {
+		supporter := ""
+		if len(supporters)-1 >= i {
+			supporter = supporters[i]
+		}
+		var item Item
+		item, err = book.NewItemWithBarcode(barcode, supporter)
+		if err != nil {
+			return
+		}
+		book.Items[i] = item
+	}
+	return nil
+}

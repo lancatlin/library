@@ -9,7 +9,7 @@ import (
 	"github.com/lancatlin/library/pkg/model"
 )
 
-func TestImport(t *testing.T) {
+func TestImportFile(t *testing.T) {
 	file, err := os.Open("./testData/success_example.csv")
 	if err != nil {
 		t.Error(err)
@@ -40,9 +40,9 @@ func TestReadRaws(t *testing.T) {
 	}
 }
 
-func TestParse(t *testing.T) {
+func TestImportOne(t *testing.T) {
 	data := map[string]string{
-		"Barcodes":  "A001;A002",
+		"Barcodes":  "A101;A102",
 		"BookName":  "TestBook",
 		"Authors":   "author1;author2",
 		"Supporter": "Donater",
@@ -52,8 +52,42 @@ func TestParse(t *testing.T) {
 		"ClassNum":  "147.987",
 		"Tags":      "book;test",
 	}
-	err := parse(data)
-	if err != nil {
-		t.Error(err)
+	errChan := make(chan string)
+	go importBook(data, errChan)
+	select {
+	case msg := <-errChan:
+		if msg != "" {
+			t.Error(msg)
+		}
+	}
+}
+
+func TestImportRepeated(t *testing.T) {
+	data := map[string]string{
+		"Barcodes":  "A103;A104",
+		"BookName":  "TestRepeat",
+		"Authors":   "author1;author2",
+		"Supporter": "Donater",
+		"Publisher": "TestPublish",
+		"Year":      "2018",
+		"ISBN":      "1234567890",
+		"ClassNum":  "147.987",
+		"Tags":      "book;test",
+	}
+	errChan := make(chan string)
+	go importBook(data, errChan)
+	select {
+	case msg := <-errChan:
+		if msg != "" {
+			t.Errorf("result not nil: %s", msg)
+		}
+	}
+	go importBook(data, errChan)
+	select {
+	case msg := <-errChan:
+		if msg == "" {
+			t.Errorf("result is nil: %s", msg)
+		}
+		t.Log(msg)
 	}
 }

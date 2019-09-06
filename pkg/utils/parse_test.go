@@ -55,7 +55,7 @@ func TestParseISBN(t *testing.T) {
 	wrong := []string{
 		"978986892949",
 		"9a8957-13-6810-8",
-		"979 986 961 1732",
+		"979 986 961 17324",
 	}
 	for q, a := range data {
 		if r := parseISBN(q); r != a {

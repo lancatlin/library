@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"regexp"
 	"strconv"
@@ -102,7 +101,6 @@ func loadCategoriesFromJSON(file io.Reader) (categories []Category) {
 	if err := dec.Decode(&categories); err != nil {
 		panic(err)
 	}
-	log.Println(categories)
 	return
 }
 

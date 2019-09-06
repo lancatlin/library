@@ -11,11 +11,13 @@ import (
 	// load driver
 
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"log"
 )
 
 var db *gorm.DB
 
 func init() {
+	log.SetFlags(log.Lshortfile)
 	filename := "test.sqlite"
 	if err := os.Remove(filename); err != nil {
 		panic(err)
@@ -34,4 +36,5 @@ func SetDB(theDB *gorm.DB) {
 		panic(err)
 	}
 	db = theDB
+	db.DB().SetMaxOpenConns(1)
 }

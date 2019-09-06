@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
+	"time"
 
 	"github.com/lancatlin/library/pkg/model"
 )
@@ -24,15 +24,27 @@ var (
 // Authors must be a string split with ',' or ';'. the content will be split by '([,;、，\n] *)+'
 // Tags is a string join by ',': also split by '([,;、，\n] *)+'
 // If a book has multiple items, write the ID only, leave the others blank.
-func ImportBooks(file io.Reader) (errList []error) {
+func ImportBooks(file io.Reader) (errorMessages []string) {
 	raws := readRaws(file)
+	errChan := make(chan string, 5)
 	for _, raw := range raws {
-		err := parse(raw)
-		if err != nil {
-			errList = append(errList, err)
+		go importBook(raw, errChan)
+	}
+	count := 0
+	for {
+		select {
+		case msg := <-errChan:
+			if msg != "" {
+				errorMessages = append(errorMessages, msg)
+			}
+			count++
+			if count >= len(raws) {
+				return
+			}
+		case <-time.After(time.Second * 2 * time.Duration(len(raws))):
+			return
 		}
 	}
-	return
 }
 
 func readRaws(file io.Reader) (raws []map[string]string) {
@@ -60,7 +72,7 @@ func convertToMap(columns, src []string) (dest map[string]string) {
 	return
 }
 
-func parse(data map[string]string) (err error) {
+func importBook(data map[string]string, errChan chan string) {
 	book := model.Book{
 		Name:        data["BookName"],
 		Description: data["Description"],
@@ -78,34 +90,26 @@ func parse(data map[string]string) (err error) {
 	supporters := parseSupporter(data["Supporter"])
 	barcodes := parseBarcodes(data["Barcodes"])
 	if len(barcodes) == 0 {
-		return fmt.Errorf("Cannot create item without barcodes")
+		errChan <- fmt.Sprintf("Error: %s Cannot create item without barcodes", book.Name)
+		return
 	}
 	if len(supporters) > len(barcodes) {
-		err = errors.New("Invalid supporter number")
+		errChan <- fmt.Sprintf("Error: %s's supporters are more than items", book.Name)
 		return
 	}
+	var err error
 	book.Category, err = model.GetCategory(barcodes)
 	if err != nil {
+		errChan <- fmt.Sprintf("Error: %s %s", book.Name, err.Error())
 		return
 	}
-	book.Items = make([]model.Item, len(barcodes))
-	for i, barcode := range barcodes {
-		supporter := ""
-		if len(supporters)-1 >= i {
-			supporter = supporters[i]
-		}
-		var item model.Item
-		item, err = book.NewItemWithBarcode(barcode, supporter)
-		if err != nil {
-			log.Println(err)
-			return
-		}
-		book.Items[i] = item
+	err = book.InitItems(barcodes, supporters)
+	if err != nil {
+		errChan <- err.Error()
 	}
 	// Create
 	if err = db.Create(&book).Error; err != nil {
-		log.Fatal(err)
+		errChan <- fmt.Sprintf("%s create error: %s", book.Name, err.Error())
 	}
-	log.Println(book.ID)
-	return nil
+	errChan <- ""
 }
