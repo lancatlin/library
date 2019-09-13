@@ -1,32 +1,20 @@
-package main
+package web
 
 import (
 	"html/template"
 	"log"
 
+	"../pkg/model"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
-
-var db *gorm.DB
-
-func init() {
-	log.SetFlags(log.Lshortfile)
-	var err error
-	db, err = gorm.Open("sqlite3", "test.db")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	db.AutoMigrate(&Book{}, &Item{}, &User{}, &Record{}, &Category{}, &Publisher{}, &Author{}, &Tag{})
-}
 
 func loadTemplate() (tpl *template.Template) {
 	tpl = template.Must(template.ParseGlob("templates/*.html"))
 	return
 }
 
-func main() {
+// Main run the web server
+func Main() {
 	r := gin.Default()
 	r.SetHTMLTemplate(loadTemplate())
 	r.Static("/static", "./static")
@@ -39,15 +27,15 @@ func main() {
 	})
 	r.GET("/search/detailed", func(c *gin.Context) {
 		page := struct {
-			User
-			Categories []Category
+			model.User
+			Categories []model.Category
 		}{
 			getUser(c),
-			[]Category{
-				Category{Name: "自然文學"},
-				Category{Name: "自然美學"},
-				Category{Name: "自然生態"},
-				Category{Name: "自然哲學"},
+			[]model.Category{
+				model.Category{Name: "自然文學"},
+				model.Category{Name: "自然美學"},
+				model.Category{Name: "自然生態"},
+				model.Category{Name: "自然哲學"},
 			},
 		}
 		c.HTML(200, "search_detailed.html", page)
@@ -63,7 +51,7 @@ func main() {
 	r.GET("/management/books/new", booksNew)
 	r.GET("/management/books/import", func(c *gin.Context) {
 		user := getUser(c)
-		if user.Role != RoleAdmin {
+		if user.Role != model.RoleAdmin {
 			c.HTML(401, "401.html", user)
 		}
 		c.HTML(200, "books_import.html", user)
