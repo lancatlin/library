@@ -1,22 +1,13 @@
-package web
+package router
 
 import (
-	"html/template"
 	"log"
 
-	"../pkg/model"
 	"github.com/gin-gonic/gin"
+	"github.com/lancatlin/library/pkg/model"
 )
 
-func loadTemplate() (tpl *template.Template) {
-	tpl = template.Must(template.ParseGlob("templates/*.html"))
-	return
-}
-
-// Main run the web server
-func Main() {
-	r := gin.Default()
-	r.SetHTMLTemplate(loadTemplate())
+func Register(r *gin.Engine) {
 	r.Static("/static", "./static")
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(200, "index.html", getUser(c))
@@ -70,5 +61,4 @@ func Main() {
 		}
 		c.String(200, "%s", "匯入成功")
 	})
-	r.Run("localhost:8080")
 }

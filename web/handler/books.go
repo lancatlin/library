@@ -1,4 +1,4 @@
-package web
+package handler
 
 import (
 	"github.com/gin-gonic/gin"
@@ -21,7 +21,7 @@ func init() {
 		Category: model.Category{
 			Name: "生態美學",
 		},
-		ClassificationNumber: "121",
+		ClassNums: "121",
 		Items: []model.Item{
 			model.Item{
 				Barcode: "A380",
@@ -46,7 +46,7 @@ func init() {
 
 func booksIndex(c *gin.Context) {
 	page := struct {
-		model.User
+		model.Account
 		model.Book
 	}{getUser(c), fakeBooks[0]}
 	c.HTML(200, "books_index.html", page)
@@ -54,7 +54,7 @@ func booksIndex(c *gin.Context) {
 
 func books(c *gin.Context) {
 	page := struct {
-		model.User
+		model.Account
 		Items []model.Item
 	}{
 		getUser(c),
@@ -65,7 +65,7 @@ func books(c *gin.Context) {
 
 func booksNew(c *gin.Context) {
 	page := struct {
-		model.User
+		model.Account
 		Categories []model.Category
 	}{
 		getUser(c),

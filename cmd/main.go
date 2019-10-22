@@ -5,5 +5,8 @@ import (
 )
 
 func main() {
-	web.Main()
+	r := gin.Default()
+	r.LoadHTMLGlob()
+	router.Register(r)
+	r.Run("localhost:8080")
 }

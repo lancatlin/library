@@ -14,7 +14,7 @@ import (
 //	Has many Tags
 type Book struct {
 	gorm.Model
-	Name string
+	Name string `json:"name"`
 	// Many to many authors
 	Authors []Author `gorm:"many2many:book_authors"`
 	// belongs to one publisher

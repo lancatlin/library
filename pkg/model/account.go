@@ -26,7 +26,6 @@ type Account struct {
 	Login     bool
 	Records   []Record `gorm:"foreignkey:BorrowerID"`
 	Donations []Item   `gorm:"foreignkey:SupporterID"`
-	Password  []byte
 }
 
 // GetAccountBySession gets the user by session id

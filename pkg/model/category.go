@@ -92,6 +92,7 @@ func InitCategoriesFromConfigs() {
 	if err != nil {
 		panic(err)
 	}
+	defer file.Close()
 	categories := loadCategoriesFromJSON(file)
 	initCategories(categories)
 }
