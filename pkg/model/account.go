@@ -34,3 +34,10 @@ func GetAccountBySession(session string) Account {
 		Role:  RoleAdmin,
 	}
 }
+
+func (a Account) Equal(obj interface{}) bool {
+	if acct, ok := obj.(Account); ok {
+		return a.ID == acct.ID
+	}
+	return false
+}

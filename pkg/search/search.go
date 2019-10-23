@@ -16,7 +16,7 @@ func SearchBooks(keyword string) (books []model.Book) {
 	return
 }
 
-func merge(s1, s2 []model.Merger) (dest []model.Merger) {
+func merge(s1, s2, dest []model.Merger) {
 	dest = make([]model.Merger, len(s1), len(s1)+len(s2))
 	copy(dest, s1)
 	for _, obj1 := range s2 {
@@ -32,4 +32,19 @@ func merge(s1, s2 []model.Merger) (dest []model.Merger) {
 		}
 	}
 	return
+}
+
+func SearchAccounts(keyword string) []model.Account {
+	var byName []model.Account
+	if err := searchByColumn(byName, keyword, "name"); err != nil {
+		panic(err)
+	}
+	var byPhone []model.Account
+	if err := searchByColumn(byPhone, keyword, "phone"); err != nil {
+		panic(err)
+	}
+	set := NewAccountSet()
+	set.Add(byName)
+	set.Add(byPhone)
+	return set.List()
 }

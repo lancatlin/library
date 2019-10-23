@@ -88,9 +88,7 @@ func (book *Book) InitItems(barcodes, supporters []string) (err error) {
 
 func (b Book) Equal(obj interface{}) bool {
 	if book, ok := obj.(Book); ok {
-		if b.ID == book.ID {
-			return true
-		}
+		return b.ID == book.ID
 	}
 	return false
 }

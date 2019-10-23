@@ -6,6 +6,7 @@ package search
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/lancatlin/library/pkg/account"
 	"github.com/lancatlin/library/pkg/model"
 )
 
@@ -28,4 +29,5 @@ func SetDB(theDB *gorm.DB) {
 	db = theDB
 	model.SetDB(db)
 	model.InitCategoriesFromConfigs()
+	account.LoadAllAccounts(db)
 }

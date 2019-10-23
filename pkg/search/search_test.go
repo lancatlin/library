@@ -80,7 +80,8 @@ func TestMerge(t *testing.T) {
 	d1 := []model.Merger{dog(1), dog(2), dog(3), dog(5), dog(6)}
 	d2 := []model.Merger{dog(3), dog(4), dog(5), dog(8), dog(9)}
 	answer := []int{1, 2, 3, 5, 6, 4, 8, 9}
-	result := merge(d1, d2)
+	var result []model.Merger
+	merge(d1, d2, result)
 	for i := range answer {
 		dog := result[i].(dog)
 		if int(dog) != answer[i] {
