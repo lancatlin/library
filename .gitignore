@@ -1,3 +1,5 @@
 test.sqlite
 static/import_example.ods
 static/書單清冊-190822.ods
+*.sqlite
+workspace.code-workspace
