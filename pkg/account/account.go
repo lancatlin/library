@@ -5,10 +5,16 @@ import (
 	"fmt"
 	"log"
 
+	"os"
+
 	"github.com/jinzhu/gorm"
 	"github.com/lancatlin/library/pkg/model"
 	_ "github.com/mattn/go-sqlite3"
+
+	_ "github.com/joho/godotenv/autoload"
 )
+
+var DB = os.Getenv("ACCOUNT_DB")
 
 func LoadAllAccounts(db *gorm.DB) (err error) {
 	return loadFromDB(db)
@@ -23,7 +29,8 @@ func loadFromDB(db *gorm.DB) (err error) {
 }
 
 func getAccountDB() (acctDB *sql.DB, err error) {
-	acctDB, err = sql.Open("sqlite3", "./testDB/account.sqlite")
+	log.Println(DB)
+	acctDB, err = sql.Open("sqlite3", DB)
 	if err != nil {
 		return nil, fmt.Errorf("getAccountDB fatal: %w", err)
 	}

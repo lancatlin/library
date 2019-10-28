@@ -1,10 +1,42 @@
 package search
 
 import (
+	"sync"
 	"testing"
 
+	"github.com/jinzhu/gorm"
+	"github.com/lancatlin/library/pkg/account"
 	"github.com/lancatlin/library/pkg/model"
 )
+
+var db *gorm.DB
+
+var searcher searchImpl
+
+func init() {
+	filename := "search.sqlite"
+	var err error
+	db, err = gorm.Open("sqlite3", filename)
+	if err != nil {
+		panic(err)
+	}
+	if err := db.AutoMigrate(&model.Book{}, &model.Item{}, &model.Account{},
+		&model.Record{}, &model.Category{}, &model.Publisher{}, &model.Author{},
+		&model.Tag{}).Error; err != nil {
+		panic(err)
+	}
+	model.SetDB(db)
+	model.InitCategoriesFromConfigs()
+	err = account.LoadAllAccounts(db)
+	if err != nil {
+		panic(err)
+	}
+
+	searcher = searchImpl{
+		db:   db,
+		lock: &sync.Mutex{},
+	}
+}
 
 func TestSearchBook(t *testing.T) {
 	word := "台灣"
@@ -53,7 +85,7 @@ func TestSearchBook(t *testing.T) {
 
 func checkEqualBooks(word, column string, answer []string, t *testing.T) {
 	var books []model.Book
-	if err := searchByColumn(&books, word, column); err != nil {
+	if err := searcher.searchByColumn(word, &books, column); err != nil {
 		t.Error(err)
 	}
 	if len(books) != len(answer) {
@@ -66,6 +98,8 @@ func checkEqualBooks(word, column string, answer []string, t *testing.T) {
 	}
 }
 
+/*
+Not using
 type dog int
 
 func (d dog) Equal(obj interface{}) bool {
@@ -76,6 +110,7 @@ func (d dog) Equal(obj interface{}) bool {
 	}
 	return false
 }
+
 func TestMerge(t *testing.T) {
 	d1 := []model.Merger{dog(1), dog(2), dog(3), dog(5), dog(6)}
 	d2 := []model.Merger{dog(3), dog(4), dog(5), dog(8), dog(9)}
@@ -86,6 +121,43 @@ func TestMerge(t *testing.T) {
 		dog := result[i].(dog)
 		if int(dog) != answer[i] {
 			t.Errorf("Answer not equal: want %d got %d", answer[i], dog)
+		}
+	}
+}
+*/
+
+func TestSearchAccounts(t *testing.T) {
+	keywords := []string{
+		"林",
+		"陳",
+		"志",
+		"78",
+		"365",
+		"574",
+		``,
+	}
+	for _, keyword := range keywords {
+		answer := searcher.fakeSearchAccount(keyword)
+		result := searcher.SearchAccounts(keyword)
+		compare(answer, result, t)
+	}
+}
+
+func (s searchImpl) fakeSearchAccount(keyword string) (accounts []model.Account) {
+	err := s.db.Where("name LIKE ?", "%"+keyword+"%").Or("phone LIKE ?", "%"+keyword+"%").Find(&accounts).Error
+	if err != nil {
+		panic(err)
+	}
+	return
+}
+
+func compare(answer, result []model.Account, t *testing.T) {
+	if len(answer) != len(result) {
+		t.Errorf(`Not eqaul: result: %v\nanswer: %v`, result, answer)
+	}
+	for i := range result {
+		if result[i].ID != answer[i].ID {
+			t.Errorf(`Not eqaul in %d: result: %v\nanswer: %v`, i, result[i], answer[i])
 		}
 	}
 }
