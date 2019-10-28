@@ -4,3 +4,4 @@ static/書單清冊-190822.ods
 *.sqlite
 workspace.code-workspace
 .env
+test.db
